@@ -22,6 +22,8 @@
 																		  fundingReference (funderIdentifierType)
 																		  subject (subjectScheme-->
 <!-- modified: 2019-10-10 osmancakirio - Date Information field added -->
+<!-- modified: 2019-10-21 osmancakirio - Information links added -->
+
 
 <head>
 <meta charset="utf-8" />
@@ -143,7 +145,7 @@
 		optionValues["funderIdentifierType"] = ["EU", "DFG", "FWF", "Other"];
 		optionValues["nameType"] = ["Personal", "Organizational"];
 		optionValues["nameIdentifierScheme"] = ["GND", "ORCID"];
-		optionValues["subjectScheme"] = ["dewey", "GND", "wikidata"]
+		optionValues["subjectScheme"] = ["DDC", "GND", "wikidata"];
 
 		function process(section) {
 			var isWrapper = $(section).hasClass("wrapper-tag");
@@ -358,7 +360,7 @@
 		.tag-group-label{
 			float:left;
 			margin-top:2px;
-			width:80%
+			width: 90%
 		}
 		.left{
 			float:left
@@ -539,6 +541,17 @@
 			vertical-align:middle
 		}
 
+		a:link {
+			text-decoration: none;
+			color: red;
+			float: right;
+		}
+
+		a:hover {
+			color: red;
+		}
+
+
 	</style>
 </head>
 <body>
@@ -547,7 +560,9 @@
 	<h3 class="mandatory">Mandatory Elements</h3>
 	<div class="form mandatory">
 		<div class="section">
-			<span class="tag-group-label" title="DOI" >DOI:</span>
+			<span class="tag-group-label" title="DOI">DOI:
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#identifier"> [more information]</a>
+			</span>
 			<div class="tag-group">
 				<div title="identifier" class="tag">
 					<input class="input-field full-width tag-value" type="text" placeholder="[DOI]" title="identifier" value="" />
@@ -557,19 +572,23 @@
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="titles" class="section wrapper-tag">
-			<span class="tag-group-label">Title(s):</span>
+			<span class="tag-group-label">Title(s):
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#title"> [more information]</a>
+			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="title" class="tag">
 					<input class="full-width input-field tag-value" type="text" placeholder="[TITLE]" title="title" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="Language" title="xml:lang" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
 					<select class="half-width input-field tag-attribute" title="titleType"></select>
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="creators" class="section wrapper-tag">
-			<span class="tag-group-label">Creator(s):</span>
+			<span class="tag-group-label">Creator(s):
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#creator"> [more information]</a>
+			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="creator" class="tag">
@@ -590,24 +609,28 @@
 					</div>
 					<div title="affiliation" class="tag">
 						<input class="half-width input-field tag-value" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value="" />
-						<input class="half-width input-field tag-attribute" type="text" placeholder="Language" title="xml:lang" value="" /><button type="button" class="add single-tag">+</button>
+						<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" /><button type="button" class="add single-tag">+</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div class="section">
-			<span class="tag-group-label">Publisher:</span>
+			<span class="tag-group-label">Publisher:
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#publisher"> [more information]</a>
+			</span>
 			<div class="tag-group">
 				<div title="publisher" class="tag">
 					<input type="text" class="full-width input-field tag-value" placeholder="[PUBLISHER]" title="publisher" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="Language" title="xml:lang" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div class="section">
-			<span class="tag-group-label">Publication Year:</span>
+			<span class="tag-group-label">Publication Year:
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#publicationyear"> [more information]</a>
+			</span>
 			<div class="tag-group">
 				<div title="publicationYear" class="tag">
 					<input type="text" class="full-width input-field tag-value" placeholder="[YYYY]" title="publicationYear" pattern="[0-9]{4}" value="" />
@@ -616,7 +639,9 @@
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div class="section">
-			<span class="tag-group-label">Resource Type:</span>
+			<span class="tag-group-label">Resource Type:
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#resourcetype"> [more information]</a>
+			</span>
 			<div class="tag-group">
 				<div title="resourceType" class="tag allow-empty">
 					<input class="half-width input-field tag-value" type="text" placeholder="[RESOURCE TYPE]" title="resourceType" value="" />
@@ -628,21 +653,25 @@
 	<h3 class="recommended">+ Recommended Elements</h3>
 	<div id="recommended" class="form recommended hidden">
 		<div title="subjects" class="section wrapper-tag">
-			<span class="tag-group-label">Subject(s):</span>
+			<span class="tag-group-label">Subject(s):
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#subject"> [more information]</a>
+			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="subject" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
 					<select class="half-width input-field tag-attribute" type="text"  title="subjectScheme" value="" />
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="Language" title="xml:lang" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
 					<input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="contributors" class="section wrapper-tag">
-			<span class="tag-group-label">Contributor(s):</span>
+			<span class="tag-group-label">Contributor(s):
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#contributor"> [more information]</a>
+			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="contributor" class="tag">
@@ -663,26 +692,30 @@
 					</div>
 					<div title="affiliation" class="tag">
 						<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" /><button type="button" class="add single-tag">+</button>
-						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="Language" title="xml:lang" value="" />
+						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
 					</div>
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="dates" class="section wrapper-tag">
-			<span class="tag-group-label">Date(s):</span>
+			<span class="tag-group-label">Date(s):
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#date"> [more information]</a>
+			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="date" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[DATE]" title="date" value="" />
 					<select class="half-width input-field tag-attribute" title="dateType"></select>
-					<input class="full-width input-field tag-value" type="text" placeholder="Date Information" title="dateInformation" value="" />
+					<input class="full-width input-field tag-value" type="text" placeholder="[DATA INFORMATION]" title="dateInformation" value="" />
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="relatedIdentifiers" class="section wrapper-tag">
-			<span class="tag-group-label">Related Identifier(s):</span>
+			<span class="tag-group-label">Related Identifier(s):
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#relatedidentifier"> [more information]</a>
+			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="relatedIdentifier" class="tag">
@@ -696,12 +729,14 @@
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="descriptions" class="section wrapper-tag">
-			<span class="tag-group-label">Description:</span>
+			<span class="tag-group-label">Description:
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#description"> [more information]</a>
+			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="description" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="Language" title="xml:lang" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
 					<select class="half-width input-field tag-attribute" title="descriptionType"></select>
 				</div>
 			</div>
@@ -711,7 +746,9 @@
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="geoLocation" class="tag">
-					<span class="tag-group-label">Geo Location Place:</span>
+					<span class="tag-group-label">Geo Location Place:
+					<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#geolocation"> [more information]</a>
+					</span>
 					<div title="geoLocationPlace" class="tag">
 						<input class="full-width input-field tag-value" type="text" placeholder="[GEO LOCATION PLACE]" title="geoLocationPlace" value="" />
 					</div>
@@ -781,7 +818,9 @@
 	<h3 class="other">+ Other Elements</h3>
 	<div id="other" class="form other hidden">
 		<div class="section">
-			<span class="tag-group-label">Language:</span>
+			<span class="tag-group-label">Language:
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#language"> [more information]</a>
+			</span>
 			<div class="tag-group">
 				<div title="language" class="tag">
 					<input class="full-width input-field tag-value" type="text" placeholder="[LANGUAGE]" title="language" value="" />
@@ -790,7 +829,9 @@
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="alternateIdentifiers" class="section wrapper-tag">
-			<span class="tag-group-label">Alternate Identifier(s):</span>
+			<span class="tag-group-label">Alternate Identifier(s):
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#alternateidentifier"> [more information]</a>
+			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="alternateIdentifier" class="tag">
@@ -801,7 +842,9 @@
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="sizes" class="section wrapper-tag">
-			<span class="tag-group-label">Size(s):</span>
+			<span class="tag-group-label">Size(s):
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#size"> [more information]</a>
+			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="size" class="tag">
@@ -811,7 +854,9 @@
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="formats" class="section wrapper-tag">
-			<span class="tag-group-label">Format(s):</span>
+			<span class="tag-group-label">Format(s):
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#format"> [more information]</a>
+			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="format" class="tag">
@@ -821,7 +866,9 @@
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div class="section">
-			<span class="tag-group-label">Version:</span>
+			<span class="tag-group-label">Version:
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#version"> [more information]</a>
+			</span>
 			<div class="tag-group">
 				<div title="version" class="tag">
 					<input class="full-width input-field tag-value" type="text" placeholder="[VERSION]" title="version" value="" />
@@ -830,22 +877,26 @@
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="rightsList" class="section wrapper-tag">
-			<span class="tag-group-label">Rights List:</span>
+			<span class="tag-group-label">Rights List:
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#rights"> [more information]</a>
+			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="rights" class="tag">
 					<input class="full-width input-field tag-value" type="text" placeholder="[RIGHTS]" title="rights" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="Language" title="xml:lang" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="Scheme URI" title="schemeURI" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="Rights Identifier Scheme" title="rightsIdentifierScheme" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="Rights Identifier" title="rightsIdentifier" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="Rights URI" title="rightsURI" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[SCHEME URI]" title="schemeURI" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[RIGHTS IDENTTIFIER SCHEME]" title="rightsIdentifierScheme" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[RIGHTS IDENTIFIER]" title="rightsIdentifier" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[RIGHTS URI]" title="rightsURI" value="" />
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="fundingReferences" class="section wrapper-tag">
-			<span class="tag-group-label">Funding Reference:</span>
+			<span class="tag-group-label">Funding Reference:
+			<a href="https://gitlab.lrz.de/RDMMUC/datacite/blob/master/bestpractice.md#fundingreference"> [more information]</a>
+			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="fundingReference" class="tag">
@@ -864,7 +915,7 @@
 					</div>
 					<div title="awardTitle" class="tag">
 						<input class="full-width input-field tag-value" type="text" placeholder="[AWARD TITLE]" title="awardTitle" value="" />
-						<input class="half-width input-field tag-attribute" type="text" placeholder="Language" title="xml:lang" value="" />
+						<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
 					</div>
 				</div>
 			</div>
