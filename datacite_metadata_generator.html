@@ -27,13 +27,13 @@
 
 <head>
 <meta charset="utf-8" />
-<title>DataCite Metadata Generator - Kernel 4.0</title>
+<title>DataCite Metadata Generator - Kernel 4.3</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script type = "text/javascript" >
 		$(document).ready(function() {
-			var kernelVersion = "4.0";
-			var kernelNamespace = "http://datacite.org/schema/kernel-4";
-			var kernelSchema = "http://schema.datacite.org/meta/kernel-4/metadata.xsd";
+			var kernelVersion = "4.3";
+			var kernelNamespace = "https://schema.datacite.org/meta/kernel-4.3/";
+			var kernelSchema = "https://schema.datacite.org/meta/kernel-4.3/metadata.xsd";
 			var kernelSchemaLocation = kernelNamespace + " " + kernelSchema;
 			var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<resource xmlns=\"" + kernelNamespace + "\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"" + kernelSchemaLocation + "\">" + br();
 			$("select[title]").each(function() {
