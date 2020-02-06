@@ -354,6 +354,9 @@
 		input.half-width-smaller{
 			width:41%
 		}
+		input.language{
+			width: 13%
+		}
 		select.half-width{
 			width:45%
 		}
@@ -362,6 +365,11 @@
 			margin-top:2px;
 			width: 90%
 		}
+		/*
+		.tag-group-info{
+			float:right;
+		}
+		*/
 		.left{
 			float:left
 		}
@@ -403,7 +411,8 @@
 		button.add,button.delete{
 			width:1.8em;
 			font-weight:400;
-			margin-left:4px
+			margin-left:4px;
+			text-align:center;
 		}
 		button.group{
 			float:right;
@@ -498,7 +507,7 @@
 		span.output{
 			float:left
 		}
-		a.button{
+		button{
 			-moz-text-blink:none;
 			-moz-text-decoration-color:#fff;
 			-moz-text-decoration-line:none;
@@ -529,12 +538,12 @@
 			color:#fff;
 			cursor:pointer;
 			direction:ltr;
-			display:inline-block;
+			display:table-cell;
 			font-family:Arial, Verdana, Helvetica, sans-serif;
 			font-size:13.3333px;
 			font-weight:400;
 			line-height:16px;
-			padding:4px 10px;
+			padding:0px 0px 0px 0px;
 			text-align:center;
 			text-decoration:none;
 			text-shadow:#222 0 1px 1px;
@@ -543,12 +552,122 @@
 
 		a:link {
 			text-decoration: none;
-			color: red;
+			color: #3784b9;
 			float: right;
+
+
 		}
+		a.tag-group-info {
+			display:inline-block;
+			margin-top:0px;
+			margin-bottom: 0px;
+
+
+			-moz-text-blink:none;
+			-moz-text-decoration-color:#fff;
+			-moz-text-decoration-line:none;
+			-moz-text-decoration-style:solid;
+			background-color:#3784b9;
+			background-image:linear-gradient(#176ca7, #3784b9);
+			background-repeat:repeat-x;
+			background-size:100% auto;
+			border-bottom-color:#3784b9;
+			border-bottom-left-radius:4px;
+			border-bottom-right-radius:4px;
+			border-bottom-style:solid;
+			border-bottom-width:1px;
+			border-collapse:collapse;
+			border-left-color:#3784b9;
+			border-left-style:solid;
+			border-left-width:1px;
+			border-right-color:#3784b9;
+			border-right-style:solid;
+			border-right-width:1px;
+			border-spacing:0;
+			border-top-color:#3784b9;
+			border-top-left-radius:4px;
+			border-top-right-radius:4px;
+			border-top-style:solid;
+			border-top-width:1px;
+			box-shadow:rgba(255, 255, 255, 0.2) 0 1px 0 0 inset, rgba(0, 0, 0, 0.05) 0 1px 2px 0;
+			color:#fff;
+			cursor:pointer;
+			direction:ltr;
+
+			font-family:Arial, Verdana, Helvetica, sans-serif;
+			font-size:10px;
+			font-weight:400;
+			line-height:16px;
+			padding:0px 10px 0px 10px;
+			text-align:center;
+			text-decoration:none;
+			text-shadow:#222 0 1px 1px;
+			vertical-align:middle
+		}
+
+		a.tag-group-info-language {
+			margin:4px 10px 10px 10px;
+			width: 1%;
+			display:inline-block;
+
+			-moz-text-blink:none;
+			-moz-text-decoration-color:#fff;
+			-moz-text-decoration-line:none;
+			-moz-text-decoration-style:solid;
+			background-color:#3784b9;
+			background-image:linear-gradient(#176ca7, #3784b9);
+			background-repeat:repeat-x;
+			background-size:100% auto;
+			border-bottom-color:#3784b9;
+			border-bottom-left-radius:4px;
+			border-bottom-right-radius:4px;
+			border-bottom-style:solid;
+			border-bottom-width:1px;
+			border-collapse:collapse;
+			border-left-color:#3784b9;
+			border-left-style:solid;
+			border-left-width:1px;
+			border-right-color:#3784b9;
+			border-right-style:solid;
+			border-right-width:1px;
+			border-spacing:0;
+			border-top-color:#3784b9;
+			border-top-left-radius:4px;
+			border-top-right-radius:4px;
+			border-top-style:solid;
+			border-top-width:1px;
+			box-shadow:rgba(255, 255, 255, 0.2) 0 1px 0 0 inset, rgba(0, 0, 0, 0.05) 0 1px 2px 0;
+			color:#fff;
+			cursor:pointer;
+			direction:ltr;
+			display:inline-block;
+			font-family:Arial, Verdana, Helvetica, sans-serif;
+			font-size:10px;
+			font-weight:400;
+			line-height:16px;
+			padding:0px 10px 0px 10px;
+			text-align:center;
+			text-decoration:none;
+			text-shadow:#222 0 1px 1px;
+			vertical-align:middle
+		}
+
+
 
 		a:hover {
 			color: red;
+		}
+		#langinput {
+			float:left;
+		}
+		#langlink{
+			float:left;
+		}
+		#langlatest {
+			float:left;
+		}
+		#date{
+			margin-right: 76%;
 		}
 
 
@@ -561,7 +680,7 @@
 	<div class="form mandatory">
 		<div class="section">
 			<span class="tag-group-label" title="DOI">DOI:
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#identifier" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#identifier" target="_blank"> ?</a>
 			</span>
 			<div class="tag-group">
 				<div title="identifier" class="tag">
@@ -573,21 +692,22 @@
 		<span class="divider">&nbsp;</span>
 		<div title="titles" class="section wrapper-tag">
 			<span class="tag-group-label">Title(s):
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#title" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#title" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="title" class="tag">
 					<input class="full-width input-field tag-value" type="text" placeholder="[TITLE]" title="title" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
-					<select class="half-width input-field tag-attribute" title="titleType"></select>
+					<input class="language input-field tag-attribute" type="text" id = "langinput" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
+					<a class="tag-group-info-language" id = "langlink" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#what-is-the-language-of-the-metadata" target="_blank"> ?</a>
+					<select class="language half-width input-field tag-attribute" id = "langlatest" title="titleType"></select>
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="creators" class="section wrapper-tag">
 			<span class="tag-group-label">Creator(s):
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#creator" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#creator" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
@@ -609,7 +729,7 @@
 					</div>
 					<div title="affiliation" class="tag">
 						<input class="half-width input-field tag-value" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value="" />
-						<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" /><button type="button" class="add single-tag">+</button>
+						<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" /><button type="button" class="add single-tag">+</button>
 					</div>
 				</div>
 			</div>
@@ -617,19 +737,19 @@
 		<span class="divider">&nbsp;</span>
 		<div class="section">
 			<span class="tag-group-label">Publisher:
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#publisher" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#publisher" target="_blank"> ? </a>
 			</span>
 			<div class="tag-group">
 				<div title="publisher" class="tag">
 					<input type="text" class="full-width input-field tag-value" placeholder="[PUBLISHER]" title="publisher" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
+					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div class="section">
 			<span class="tag-group-label">Publication Year:
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#publicationyear" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#publicationyear" target="_blank">?</a>
 			</span>
 			<div class="tag-group">
 				<div title="publicationYear" class="tag">
@@ -640,7 +760,7 @@
 		<span class="divider">&nbsp;</span>
 		<div class="section">
 			<span class="tag-group-label">Resource Type:
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#resourcetype" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#resourcetype" target="_blank">?</a>
 			</span>
 			<div class="tag-group">
 				<div title="resourceType" class="tag allow-empty">
@@ -654,7 +774,7 @@
 	<div id="recommended" class="form recommended hidden">
 		<div title="subjects" class="section wrapper-tag">
 			<span class="tag-group-label">Subject(s):
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#subject" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#subject" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
@@ -662,7 +782,7 @@
 					<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
 					<select class="half-width input-field tag-attribute" type="text"  title="subjectScheme" value="" />
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
+					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
 					<input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
 				</div>
 			</div>
@@ -670,7 +790,7 @@
 		<span class="divider">&nbsp;</span>
 		<div title="contributors" class="section wrapper-tag">
 			<span class="tag-group-label">Contributor(s):
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#contributor" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#contributor" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
@@ -692,7 +812,7 @@
 					</div>
 					<div title="affiliation" class="tag">
 						<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" /><button type="button" class="add single-tag">+</button>
-						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
+						<input class="language half-width input-field tag-attribute" id= "date" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
 					</div>
 				</div>
 			</div>
@@ -700,7 +820,7 @@
 		<span class="divider">&nbsp;</span>
 		<div title="dates" class="section wrapper-tag">
 			<span class="tag-group-label">Date(s):
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#date" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#date" target="_blank"> ?</a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
@@ -714,7 +834,7 @@
 		<span class="divider">&nbsp;</span>
 		<div title="relatedIdentifiers" class="section wrapper-tag">
 			<span class="tag-group-label">Related Identifier(s):
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#relatedidentifier" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#relatedidentifier" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
@@ -730,13 +850,13 @@
 		<span class="divider">&nbsp;</span>
 		<div title="descriptions" class="section wrapper-tag">
 			<span class="tag-group-label">Description:
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#description" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#description" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="description" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
+					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
 					<select class="half-width input-field tag-attribute" title="descriptionType"></select>
 				</div>
 			</div>
@@ -747,7 +867,7 @@
 			<div class="tag-group">
 				<div title="geoLocation" class="tag">
 					<span class="tag-group-label">Geo Location Place:
-					<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#geolocation" target="_blank"> [more information]</a>
+					<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#geolocation" target="_blank"> ? </a>
 					</span>
 					<div title="geoLocationPlace" class="tag">
 						<input class="full-width input-field tag-value" type="text" placeholder="[GEO LOCATION PLACE]" title="geoLocationPlace" value="" />
@@ -819,18 +939,18 @@
 	<div id="other" class="form other hidden">
 		<div class="section">
 			<span class="tag-group-label">Language:
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#language" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#language" target="_blank"> ? </a>
 			</span>
 			<div class="tag-group">
 				<div title="language" class="tag">
-					<input class="full-width input-field tag-value" type="text" placeholder="[LANGUAGE]" title="language" value="" />
+					<input class="language full-width input-field tag-value" type="text" maxlength="3" placeholder="[LANG]" title="language" value="" />
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="alternateIdentifiers" class="section wrapper-tag">
 			<span class="tag-group-label">Alternate Identifier(s):
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#alternateidentifier" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#alternateidentifier" target="_blank"> ?</a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
@@ -843,7 +963,7 @@
 		<span class="divider">&nbsp;</span>
 		<div title="sizes" class="section wrapper-tag">
 			<span class="tag-group-label">Size(s):
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#size" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#size" target="_blank"> ?</a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
@@ -855,7 +975,7 @@
 		<span class="divider">&nbsp;</span>
 		<div title="formats" class="section wrapper-tag">
 			<span class="tag-group-label">Format(s):
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#format" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#format" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
@@ -867,7 +987,7 @@
 		<span class="divider">&nbsp;</span>
 		<div class="section">
 			<span class="tag-group-label">Version:
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#version" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#version" target="_blank"> ? </a>
 			</span>
 			<div class="tag-group">
 				<div title="version" class="tag">
@@ -878,13 +998,13 @@
 		<span class="divider">&nbsp;</span>
 		<div title="rightsList" class="section wrapper-tag">
 			<span class="tag-group-label">Rights List:
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#rights" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#rights" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="rights" class="tag">
 					<input class="full-width input-field tag-value" type="text" placeholder="[RIGHTS]" title="rights" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
+					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[SCHEME URI]" title="schemeURI" value="" />
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[RIGHTS IDENTTIFIER SCHEME]" title="rightsIdentifierScheme" value="" />
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[RIGHTS IDENTIFIER]" title="rightsIdentifier" value="" />
@@ -895,7 +1015,7 @@
 		<span class="divider">&nbsp;</span>
 		<div title="fundingReferences" class="section wrapper-tag">
 			<span class="tag-group-label">Funding Reference:
-			<a href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#fundingreference" target="_blank"> [more information]</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#fundingreference" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
@@ -915,7 +1035,7 @@
 					</div>
 					<div title="awardTitle" class="tag">
 						<input class="full-width input-field tag-value" type="text" placeholder="[AWARD TITLE]" title="awardTitle" value="" />
-						<input class="half-width input-field tag-attribute" type="text" placeholder="[LANGUAGE]" title="xml:lang" value="" />
+						<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
 					</div>
 				</div>
 			</div>
