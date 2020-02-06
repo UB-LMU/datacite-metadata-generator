@@ -10,7 +10,7 @@ This update was created by [Osman Cakir](https://github.com/osmancakir) from the
 
 Download:
 =========
-[Download Here](github.com/UB-LMU/datacite-metadata-generator/blob/master/datacite_metadata_generator.html)
+[Download Here](https://github.com/UB-LMU/datacite-metadata-generator/blob/master/datacite_metadata_generator.html)
 
 How to use:
 ===========
