@@ -348,15 +348,23 @@
 		.full-width{
 			width:89%
 		}
+		.full-width-language{
+			width:13%;
+			clear:both;
+		}
+
 		input.half-width{
 			width:43%
 		}
+
+
 		input.half-width-smaller{
 			width:41%
 		}
 		input.language{
 			width: 13%
 		}
+
 		select.half-width{
 			width:45%
 		}
@@ -561,8 +569,6 @@
 			display:inline-block;
 			margin-top:0px;
 			margin-bottom: 0px;
-
-
 			-moz-text-blink:none;
 			-moz-text-decoration-color:#fff;
 			-moz-text-decoration-line:none;
@@ -593,7 +599,6 @@
 			color:#fff;
 			cursor:pointer;
 			direction:ltr;
-
 			font-family:Arial, Verdana, Helvetica, sans-serif;
 			font-size:10px;
 			font-weight:400;
@@ -609,7 +614,6 @@
 			margin:4px 10px 10px 10px;
 			width: 1%;
 			display:inline-block;
-
 			-moz-text-blink:none;
 			-moz-text-decoration-color:#fff;
 			-moz-text-decoration-line:none;
@@ -652,11 +656,10 @@
 			vertical-align:middle
 		}
 
-
-
 		a:hover {
 			color: red;
 		}
+
 		#langinput {
 			float:left;
 		}
@@ -674,7 +677,7 @@
 	</style>
 </head>
 <body>
-<h2 class="pagetitle">DataCite Metadata Generator - Kernel 4.0</h2>
+<h2 class="pagetitle">DataCite Metadata Generator - Kernel 4.3</h2>
 <div class="left">
 	<h3 class="mandatory">Mandatory Elements</h3>
 	<div class="form mandatory">
@@ -827,7 +830,7 @@
 				<div title="date" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[DATE]" title="date" value="" />
 					<select class="half-width input-field tag-attribute" title="dateType"></select>
-					<input class="full-width input-field tag-value" type="text" placeholder="[DATA INFORMATION]" title="dateInformation" value="" />
+					<input class="full-width input-field tag-value" type="text" placeholder="[DATE INFORMATION]" title="dateInformation" value="" />
 				</div>
 			</div>
 		</div>
@@ -943,7 +946,7 @@
 			</span>
 			<div class="tag-group">
 				<div title="language" class="tag">
-					<input class="language full-width input-field tag-value" type="text" maxlength="3" placeholder="[LANG]" title="language" value="" />
+					<input class="full-width input-field tag-value" type="text" maxlength="3" placeholder="[LANG]" title="language" value="" />
 				</div>
 			</div>
 		</div>
