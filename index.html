@@ -135,7 +135,14 @@
 			});
 		});
 		var optionValues = {};
-		optionValues["descriptionType"] = ["Abstract", "Methods", "TechnicalInfo"];
+		optionValues["descriptionType"] = [
+			"Abstract",
+			"Methods",
+			"SeriesInformation",
+			"TableOfContents",
+			"TechnicalInfo",
+			"Other"
+		];
 		optionValues["relatedIdentifierType"] = [
 			"ARK",
 			"arXiv",
@@ -945,7 +952,7 @@
 			<div class="tag-group">
 				<div title="description" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
-					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
+					<textarea class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value=""></textarea>
 					<select class="half-width input-field tag-attribute" title="descriptionType"></select>
 				</div>
 			</div>
