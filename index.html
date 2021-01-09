@@ -24,16 +24,18 @@
 <!-- modified: 2019-10-10 osmancakirio - Date Information field added -->
 <!-- modified: 2019-10-21 osmancakirio - Information links added -->
 <!-- modified: 2021-01-09 samuel-rosa - formats code for better readability
-			- descriptionType: adds missing options
-			- relatedIdentifierType: adds missing options
-			- relationType: adds missing options
-			- resourceTypeGeneral: adds missing options
-			- dateType: adds missing options
-			- contributorType: adds missing options
-			- funderIdentifierType: adds missing options
-			- nameIdentifierScheme: adds missing options
-			- description: use textarea instead of input
-			- dateInformation: use textarea instead of input -->
+	- descriptionType: adds missing options
+	- relatedIdentifierType: adds missing options
+	- relationType: adds missing options
+	- resourceTypeGeneral: adds missing options
+	- dateType: adds missing options
+	- contributorType: adds missing options
+	- funderIdentifierType: adds missing options
+	- nameIdentifierScheme: adds missing options
+	- description: use textarea instead of input
+	- dateInformation: use textarea instead of input
+	- add identifierType = ["DOI"] (more identifiers may be used in the future -- see DataCite road map)
+	- validate schema addresses using bolognese -->
 <head>
 <meta charset="utf-8" />
 <title>DataCite Metadata Generator - Kernel 4.3</title>
@@ -144,6 +146,7 @@
 			});
 		});
 		var optionValues = {};
+		optionValues["identifierType"] = ["DOI"]
 		optionValues["descriptionType"] = [
 			"Abstract",
 			"Methods",
@@ -788,18 +791,22 @@
 <div class="left">
 	<h3 class="mandatory">Mandatory Elements</h3>
 	<div class="form mandatory">
-		<div class="section">
-			<span class="tag-group-label" title="DOI">DOI:
+		<!-- Identifier -->
+		<div title="identifier" class="section wrapper-tag">
+			<span class="tag-group-label">Identifier:
 			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#identifier" target="_blank"> ? </a>
 			</span>
 			<div class="tag-group">
 				<div title="identifier" class="tag">
-					<input class="input-field full-width tag-value" type="text" placeholder="[DOI]" title="identifier" value="" />
-					<input class="input-field tag-attribute" type="hidden" title="identifierType" value="DOI" />
+					<!-- <input class="input-field full-width tag-value" type="text" placeholder="[DOI]" title="identifier" value="" /> -->
+					<!-- <input class="input-field tag-attribute" type="hidden" title="identifierType" value="DOI" /> -->
+					<input class="half-width input-field tag-value" type="text" placeholder="[IDENTIFIER]" title="Identifier" value=""/>
+					<select class="half-width input-field tag-attribute" title="identifierType"></select>
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
+		<!-- Title(s) -->
 		<div title="titles" class="section wrapper-tag">
 			<span class="tag-group-label">Title(s):
 			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#title" target="_blank"> ? </a>
@@ -815,6 +822,7 @@
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
+		<!-- Creator(s) -->
 		<div title="creators" class="section wrapper-tag">
 			<span class="tag-group-label">Creator(s):
 			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#creator" target="_blank"> ? </a>
