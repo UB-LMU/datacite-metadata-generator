@@ -1,5 +1,4 @@
-datacite-metadata-generator
-===========================
+# datacite-metadata-generator
 
 This is a single HTML form which can be used to generate DataCite Metadata Kernel 4.3 XML.
 
@@ -11,28 +10,24 @@ The main goal of this form was to create a tool which does not require any insta
 This update was created by [Osman Cakir](https://github.com/osmancakir) from the IT-Group for the Humanities (ITG) at Ludwig-Maximilians-Universität München.
 The work is part of the project "eHumanities – interdisziplinär" and is mentioned in the [DataCite Best Practice Guide](https://github.com/UB-LMU/DataCite_BestPracticeGuide).
 
-Download:
-=========
+## Download
 
 [Download Here](https://github.com/UB-LMU/datacite-metadata-generator/blob/master/index.html)
 
-How to use:
-===========
+## How to use
 
 - Download datacite-metadata-generator.html.
 - Open using a browser (Firefox/Chrome/Opera recommended, or IE8+).
 - Start creating metadata.
 - Use 'Select All' button to copy and paste results or 'Save as file' button to save results to a file.
 
-Uses:
-=====
+## Uses
 
 - HTML5
 - CSS3
 - JQuery 3.1.1
 
-Notes:
-======
+## Notes
 
 - Currently the 'save to file' feature does not work in Safari.
 - The form does not perform any XML validation or validation against the DataCite schema.
