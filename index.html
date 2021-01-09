@@ -24,16 +24,16 @@
 <!-- modified: 2019-10-10 osmancakirio - Date Information field added -->
 <!-- modified: 2019-10-21 osmancakirio - Information links added -->
 <!-- modified: 2021-01-09 samuel-rosa - formats code for better readability
-																			- descriptionType: adds missing options
-																			- relatedIdentifierType: adds missing options
-																			- relationType: adds missing options
-																			- resourceTypeGeneral: adds missing options
-																			- dateType: adds missing options
-																			- contributorType: adds missing options
-																			- funderIdentifierType: adds missing options
-																			- nameIdentifierScheme: adds missing options
-																			- description: use textarea instead of input
-																			- dateInformation: use textarea instead of input -->
+			- descriptionType: adds missing options
+			- relatedIdentifierType: adds missing options
+			- relationType: adds missing options
+			- resourceTypeGeneral: adds missing options
+			- dateType: adds missing options
+			- contributorType: adds missing options
+			- funderIdentifierType: adds missing options
+			- nameIdentifierScheme: adds missing options
+			- description: use textarea instead of input
+			- dateInformation: use textarea instead of input -->
 <head>
 <meta charset="utf-8" />
 <title>DataCite Metadata Generator - Kernel 4.3</title>
@@ -41,8 +41,8 @@
 	<script type = "text/javascript" >
 		$(document).ready(function() {
 			var kernelVersion = "4.3";
-			var kernelNamespace = "https://schema.datacite.org/meta/kernel-4.3/";
-			var kernelSchema = "https://schema.datacite.org/meta/kernel-4.3/metadata.xsd";
+			var kernelNamespace = "http://datacite.org/schema/kernel-4.3";
+			var kernelSchema = "http://schema.datacite.org/meta/kernel-4.3/metadata.xsd";
 			var kernelSchemaLocation = kernelNamespace + " " + kernelSchema;
 			var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<resource xmlns=\"" + kernelNamespace + "\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"" + kernelSchemaLocation + "\">" + br();
 			$("select[title]").each(function() {
