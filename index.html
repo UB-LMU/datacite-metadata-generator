@@ -35,7 +35,8 @@
 	- description: use textarea instead of input
 	- dateInformation: use textarea instead of input
 	- add identifierType = ["DOI"] (more identifiers may be used in the future -- see DataCite road map)
-	- validate schema addresses using bolognese -->
+	- validate schema addresses using bolognese
+	- affiliationIdentifierScheme: adds options -->
 <head>
 <meta charset="utf-8" />
 <title>DataCite Metadata Generator - Kernel 4.3</title>
@@ -277,7 +278,15 @@
 		];
 		optionValues["nameType"] = ["Personal", "Organizational"];
 		optionValues["nameIdentifierScheme"] = ["ORCID", "ISNI", "ROR", "GRID", "GND", "Lattes"];
-		optionValues["subjectScheme"] = ["DDC", "GND", "wikidata"];
+		optionValues["affiliationIdentifierScheme"] = [
+			"ROR",
+			"GRID",
+			"ISNI",
+			"Wikidata",
+			"Crossref Funder ID",
+			"Other"
+		]
+		optionValues["subjectScheme"] = ["DDC", "GND", "Wikidata"];
 
 		function process(section) {
 			var isWrapper = $(section).hasClass("wrapper-tag");
@@ -842,17 +851,23 @@
 					</div>
 					<div title="nameIdentifier" class="tag">
 						<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
-						<select class="half-width input-field tag-attribute" type="text" title="nameIdentifierScheme" value="" />
-						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" /><button type="button" class="add single-tag">+</button>
+						<select class="half-width input-field tag-attribute" type="text" title="nameIdentifierScheme" value=""></select>
+						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[NAME IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
+						<button type="button" class="add single-tag">+</button>
 					</div>
 					<div title="affiliation" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value="" />
-						<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" /><button type="button" class="add single-tag">+</button>
+						<input class="input-field half-width tag-value" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value="" />
+						<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
+						<button type="button" class="add single-tag">+</button>
+						<input class="half-width input-field tag-value" type="text" placeholder="[AFFILIATION IDENTIFIER]" title="affiliationIdentifier" value=""/>
+						<select class="half-width input-field tag-attribute" type="text" title="affiliationIdentifierScheme" value=""></select>
+						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[AFFILIATION IDENTIFIER SCHEME URI]" title="schemeURI" value=""/>
 					</div>
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
+		<!-- Publisher -->
 		<div class="section">
 			<span class="tag-group-label">Publisher:
 			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#publisher" target="_blank"> ? </a>
