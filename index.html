@@ -856,18 +856,21 @@
 						<input class="half-width input-field tag-value" type="text" placeholder="[FAMILY NAME] (optional)" title="familyName" value="" />
 					</div>
 					<div title="nameIdentifier" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
+						<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value=""/>
 						<select class="half-width input-field tag-attribute" type="text" title="nameIdentifierScheme" value=""></select>
-						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[NAME IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
 						<button type="button" class="add single-tag">+</button>
+						<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME IDENTIFIER SCHEME URI]" title="schemeURI" value=""/>
+						<br/>
 					</div>
+					<!-- Affiliation -->
 					<div title="affiliation" class="tag">
-						<input class="input-field half-width tag-value" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value="" />
-						<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
+						<input class="input-field tag-value" style="width: 73.5%;" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value=""/>
+						<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value=""/>
 						<button type="button" class="add single-tag">+</button>
 						<input class="half-width input-field tag-value" type="text" placeholder="[AFFILIATION IDENTIFIER]" title="affiliationIdentifier" value=""/>
 						<select class="half-width input-field tag-attribute" type="text" title="affiliationIdentifierScheme" value=""></select>
-						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[AFFILIATION IDENTIFIER SCHEME URI]" title="schemeURI" value=""/>
+						<input class="half-width input-field tag-attribute" type="text" placeholder="[AFFILIATION IDENTIFIER SCHEME URI]" title="schemeURI" value=""/>
+						<br/>
 					</div>
 				</div>
 			</div>
@@ -880,8 +883,8 @@
 			</span>
 			<div class="tag-group">
 				<div title="publisher" class="tag">
-					<input type="text" class="full-width input-field tag-value" placeholder="[PUBLISHER]" title="publisher" value="" />
-					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
+					<input type="text" class="input-field tag-value" style="width: 73.5%;" placeholder="[PUBLISHER]" title="publisher" value=""/>
+					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value=""/>
 				</div>
 			</div>
 		</div>
@@ -919,7 +922,7 @@
 			<div class="tag-group">
 				<div title="subject" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
-					<select class="half-width input-field tag-attribute" type="text"  title="subjectScheme" value="" />
+					<select class="half-width input-field tag-attribute" type="text"  title="subjectScheme" value=""></select>
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
 					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
 					<input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
@@ -946,12 +949,14 @@
 					</div>
 					<div title="nameIdentifier" class="tag">
 						<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
-						<select class="half-width input-field tag-attribute" type="text" title="nameIdentifierScheme" value="" />
-						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" /><button type="button" class="add single-tag">+</button>
+						<select class="half-width input-field tag-attribute" type="text" title="nameIdentifierScheme" value=""></select>
+						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
+						<button type="button" class="add single-tag">+</button>
 					</div>
 					<div title="affiliation" class="tag">
-						<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" /><button type="button" class="add single-tag">+</button>
-						<input class="language half-width input-field tag-attribute" id= "date" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
+						<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" />
+						<button type="button" class="add single-tag">+</button>
+						<input class="language half-width input-field tag-attribute" id= "date" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value=""/>
 					</div>
 				</div>
 			</div>
