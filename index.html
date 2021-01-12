@@ -1,5 +1,5 @@
 <!DOCTYPE html><html>
-<!-- DataCite Metadata Generator (Kernel 4.0)-->
+<!-- DataCite Metadata Generator (Kernel 4.3)-->
 <!-- created: 2013-10-04 paluchm - DataCite Canada -->
 <!-- modified: 2015-02-04 paluchm - Updated to Kernel 3.1 -->
 <!-- modified: 2015-11-01 paluchm - Fixed HTML validation problems. Modified implementation so that new XML tags can be generated just by adding HTML elements with proper names and classes. -->
@@ -23,8 +23,21 @@
 																		  subject (subjectScheme-->
 <!-- modified: 2019-10-10 osmancakirio - Date Information field added -->
 <!-- modified: 2019-10-21 osmancakirio - Information links added -->
-
-
+<!-- modified: 2021-01-09 samuel-rosa - formats code for better readability
+	- descriptionType: adds missing options
+	- relatedIdentifierType: adds missing options
+	- relationType: adds missing options
+	- resourceTypeGeneral: adds missing options
+	- dateType: adds missing options
+	- contributorType: adds missing options
+	- funderIdentifierType: adds missing options
+	- nameIdentifierScheme: adds missing options
+	- description: use textarea instead of input
+	- dateInformation: use textarea instead of input
+	- add identifierType = ["DOI"] (more identifiers may be used in the future -- see DataCite road map)
+	- validate schema addresses using bolognese
+	- affiliationIdentifierScheme: adds options 
+	- adds reference section -->
 <head>
 <meta charset="utf-8" />
 <title>DataCite Metadata Generator - Kernel 4.3</title>
@@ -32,8 +45,8 @@
 	<script type = "text/javascript" >
 		$(document).ready(function() {
 			var kernelVersion = "4.3";
-			var kernelNamespace = "https://schema.datacite.org/meta/kernel-4.3/";
-			var kernelSchema = "https://schema.datacite.org/meta/kernel-4.3/metadata.xsd";
+			var kernelNamespace = "http://datacite.org/schema/kernel-4.3";
+			var kernelSchema = "http://schema.datacite.org/meta/kernel-4.3/metadata.xsd";
 			var kernelSchemaLocation = kernelNamespace + " " + kernelSchema;
 			var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<resource xmlns=\"" + kernelNamespace + "\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"" + kernelSchemaLocation + "\">" + br();
 			$("select[title]").each(function() {
@@ -135,17 +148,152 @@
 			});
 		});
 		var optionValues = {};
-		optionValues["descriptionType"] = ["Abstract", "Methods", "TechnicalInfo"];
-		optionValues["relatedIdentifierType"] = ["ARK", "arXiv", "bibcode", "DOI", "EAN13", "EISSN", "Handle", "IGSN", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PURL", "UPC", "URL", "URN"];
-		optionValues["relationType"] = ["describes", "isDescribedBy", "hasPart", "isPartOf", "hasMetadata","isMetadataFor", "hasVersion","isVersionOf","isNewVersionOf", "isPreviousVersionOf", "isSourceOf", "isDerivedFrom", "references", "isReferencedBy", "isVariantFormOf", "isIdenticalTo", "isSupplementTo", "isSupplementedBy", "documents", "isDocumentedBy" ];
-		optionValues["resourceTypeGeneral"] = ["Audiovisual", "Collection", "Dataset", "Image", "Model", "Software", "Sound", "Text", "Workflow", "Other"];
-		optionValues["dateType"] = ["Accepted", "Available", "Copyrighted", "Collected", "Created", "Issued", "Submitted", "Updated", "Valid", "Withdrawn"];
-		optionValues["contributorType"] = ["DataCollector", "DataCurator", "HostingInstitution", "ProjectLeader", "ProjectManager", "ProjectMember", "Researcher", "RightsHolder", "WorkPackageLeader"];
-		optionValues["titleType"] = ["AlternativeTitle", "Subtitle", "TranslatedTitle", "Other"];
-		optionValues["funderIdentifierType"] = ["EU", "DFG", "FWF", "Other"];
+		optionValues["identifierType"] = ["DOI"]
+		optionValues["descriptionType"] = [
+			"Abstract",
+			"Methods",
+			"SeriesInformation",
+			"TableOfContents",
+			"TechnicalInfo",
+			"Other"
+		];
+		optionValues["relatedIdentifierType"] = [
+			"ARK",
+			"arXiv",
+			"bibcode",
+			"DOI",
+			"EAN13",
+			"EISSN",
+			"Handle",
+			"IGSN",
+			"ISBN",
+			"ISSN",
+			"ISTC",
+			"LISSN",
+			"LSID",
+			"PMID",
+			"PURL",
+			"UPC",
+			"URL",
+			"URN",
+			"w3id"
+		];
+		optionValues["relationType"] = [
+			"IsCitedBy",
+			"Cites",
+			"IsSupplementTo",
+			"IsSupplementedBy",
+			"IsContinuedBy",
+			"Continues",
+			"IsDescribedBy",
+			"Describes",
+			"HasMetadata",
+			"IsMetadataFor",
+			"HasVersion",
+			"IsVersionOf",
+			"IsNewVersionOf",
+			"IsPreviousVersionOf",
+			"IsPartOf",
+			"HasPart",
+			"IsReferencedBy",
+			"References",
+			"IsDocumentedBy",
+			"Documents",
+			"IsCompiledBy",
+			"Compiles",
+			"IsVariantFormOf",
+			"IsOriginalFormOf",
+			"IsIdenticalTo",
+			"IsReviewedBy",
+			"Reviews",
+			"IsDerivedFrom",
+			"IsSourceOf",
+			"IsRequiredBy",
+			"Requires",
+			"IsObsoletedBy",
+			"Obsoletes"
+		];
+		optionValues["resourceTypeGeneral"] = [
+			"Audiovisual",
+			"Collection",
+			"DataPaper",
+			"Dataset",
+			"Event",
+			"Image",
+			"InteractiveResource",
+			"Model",
+			"PhysicalObject",
+			"Service",
+			"Software",
+			"Sound",
+			"Text",
+			"Workflow",
+			"Other"
+		];
+		optionValues["dateType"] = [
+			"Accepted",
+			"Available",
+			"Copyrighted",
+			"Collected",
+			"Created",
+			"Issued",
+			"Submitted",
+			"Updated",
+			"Valid",
+			"Withdrawn",
+			"Other"
+		];
+		optionValues["contributorType"] = [
+			"ContactPerson",
+			"DataCollector",
+			"DataCurator",
+			"DataManager",
+			"Distributor",
+			"Editor",
+			"HostingInstitution",
+			"Producer",
+			"ProjectLeader",
+			"ProjectManager",
+			"ProjectMember",
+			"RegistrationAgency",
+			"RegistrationAuthority",
+			"RelatedPerson",
+			"Researcher",
+			"ResearchGroup",
+			"RightsHolder",
+			"Sponsor",
+			"Supervisor",
+			"WorkPackageLeader",
+			"Other"
+		];
+		optionValues["titleType"] = [
+			// "MainTitle",
+			"AlternativeTitle",
+			"Subtitle",
+			"TranslatedTitle",
+			"Other"
+		];
+		optionValues["funderIdentifierType"] = [
+			"Crossref Funder ID",
+			"GRID",
+			"ISNI",
+			"ROR",
+			"EU",
+			"DFG",
+			"FWF",
+			"Other"
+		];
 		optionValues["nameType"] = ["Personal", "Organizational"];
-		optionValues["nameIdentifierScheme"] = ["GND", "ORCID"];
-		optionValues["subjectScheme"] = ["DDC", "GND", "wikidata"];
+		optionValues["nameIdentifierScheme"] = ["ORCID", "ISNI", "ROR", "GRID", "GND", "Lattes"];
+		optionValues["affiliationIdentifierScheme"] = [
+			"ROR",
+			"GRID",
+			"ISNI",
+			"Wikidata",
+			"Crossref Funder ID",
+			"Other"
+		]
+		optionValues["subjectScheme"] = ["DDC", "GND", "Wikidata"];
 
 		function process(section) {
 			var isWrapper = $(section).hasClass("wrapper-tag");
@@ -326,8 +474,7 @@
 				downloadFile();
 			}
 		};
-
-		</script>
+	</script>
 
 	<style>
 		body{
@@ -548,8 +695,6 @@
 			text-decoration: none;
 			color: #3784b9;
 			float: right;
-
-
 		}
 		a.tag-group-info {
 			display:inline-block;
@@ -643,7 +788,6 @@
 		a:hover {
 			color: red;
 		}
-    
 		#langinput {
 			float:left;
 		}
@@ -663,18 +807,22 @@
 <div class="left">
 	<h3 class="mandatory">Mandatory Elements</h3>
 	<div class="form mandatory">
-		<div class="section">
-			<span class="tag-group-label" title="DOI">DOI:
-			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#identifier" target="_blank"> ?</a>
+		<!-- Identifier -->
+		<div title="identifier" class="section wrapper-tag">
+			<span class="tag-group-label">Identifier:
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#identifier" target="_blank"> ? </a>
 			</span>
 			<div class="tag-group">
 				<div title="identifier" class="tag">
-					<input class="input-field full-width tag-value" type="text" placeholder="[DOI]" title="identifier" value="" />
-					<input class="input-field tag-attribute" type="hidden" title="identifierType" value="DOI" />
+					<!-- <input class="input-field full-width tag-value" type="text" placeholder="[DOI]" title="identifier" value="" /> -->
+					<!-- <input class="input-field tag-attribute" type="hidden" title="identifierType" value="DOI" /> -->
+					<input class="half-width input-field tag-value" type="text" placeholder="[IDENTIFIER]" title="Identifier" value=""/>
+					<select class="half-width input-field tag-attribute" title="identifierType"></select>
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
+		<!-- Title(s) -->
 		<div title="titles" class="section wrapper-tag">
 			<span class="tag-group-label">Title(s):
 			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#title" target="_blank"> ? </a>
@@ -683,13 +831,14 @@
 			<div class="tag-group">
 				<div title="title" class="tag">
 					<input class="full-width input-field tag-value" type="text" placeholder="[TITLE]" title="title" value="" />
-					<input class="language input-field tag-attribute" type="text" id = "langinput" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
-					<a class="tag-group-info-language" id = "langlink" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#what-is-the-language-of-the-metadata" target="_blank"> ?</a>
-					<select class="language half-width input-field tag-attribute" id = "langlatest" title="titleType"></select>
+					<input class="language input-field tag-attribute" type="text" id="langinput" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
+					<a class="tag-group-info-language" id="langlink" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#what-is-the-language-of-the-metadata" target="_blank"> ?</a>
+					<select class="language half-width input-field tag-attribute" id="langlatest" title="titleType"></select>
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
+		<!-- Creator(s) -->
 		<div title="creators" class="section wrapper-tag">
 			<span class="tag-group-label">Creator(s):
 			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#creator" target="_blank"> ? </a>
@@ -708,33 +857,42 @@
 						<input class="half-width input-field tag-value" type="text" placeholder="[FAMILY NAME] (optional)" title="familyName" value="" />
 					</div>
 					<div title="nameIdentifier" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
-						<select class="half-width input-field tag-attribute" type="text" title="nameIdentifierScheme" value="" />
-						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" /><button type="button" class="add single-tag">+</button>
+						<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value=""/>
+						<select class="half-width input-field tag-attribute" type="text" title="nameIdentifierScheme" value=""></select>
+						<button type="button" class="add single-tag">+</button>
+						<input class="half-width input-field tag-attribute" type="text" placeholder="[NAME IDENTIFIER SCHEME URI]" title="schemeURI" value=""/>
+						<br/>
 					</div>
+					<!-- Affiliation -->
 					<div title="affiliation" class="tag">
-						<input class="half-width input-field tag-value" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value="" />
-						<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" /><button type="button" class="add single-tag">+</button>
+						<input class="input-field tag-value" style="width: 73.5%;" type="text" placeholder="[CREATOR AFFILIATION]" title="affiliation" value=""/>
+						<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value=""/>
+						<button type="button" class="add single-tag">+</button>
+						<input class="half-width input-field tag-value" type="text" placeholder="[AFFILIATION IDENTIFIER]" title="affiliationIdentifier" value=""/>
+						<select class="half-width input-field tag-attribute" type="text" title="affiliationIdentifierScheme" value=""></select>
+						<input class="half-width input-field tag-attribute" type="text" placeholder="[AFFILIATION IDENTIFIER SCHEME URI]" title="schemeURI" value=""/>
+						<br/>
 					</div>
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
+		<!-- Publisher -->
 		<div class="section">
 			<span class="tag-group-label">Publisher:
 			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#publisher" target="_blank"> ? </a>
 			</span>
 			<div class="tag-group">
 				<div title="publisher" class="tag">
-					<input type="text" class="full-width input-field tag-value" placeholder="[PUBLISHER]" title="publisher" value="" />
-					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
+					<input type="text" class="input-field tag-value" style="width: 73.5%;" placeholder="[PUBLISHER]" title="publisher" value=""/>
+					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value=""/>
 				</div>
 			</div>
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div class="section">
 			<span class="tag-group-label">Publication Year:
-			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#publicationyear" target="_blank">?</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#publicationyear" target="_blank"> ? </a>
 			</span>
 			<div class="tag-group">
 				<div title="publicationYear" class="tag">
@@ -745,7 +903,7 @@
 		<span class="divider">&nbsp;</span>
 		<div class="section">
 			<span class="tag-group-label">Resource Type:
-			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#resourcetype" target="_blank">?</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#resourcetype" target="_blank"> ? </a>
 			</span>
 			<div class="tag-group">
 				<div title="resourceType" class="tag allow-empty">
@@ -765,7 +923,7 @@
 			<div class="tag-group">
 				<div title="subject" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[SUBJECT]" title="subject" value="" />
-					<select class="half-width input-field tag-attribute" type="text"  title="subjectScheme" value="" />
+					<select class="half-width input-field tag-attribute" type="text"  title="subjectScheme" value=""></select>
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
 					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
 					<input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
@@ -792,12 +950,14 @@
 					</div>
 					<div title="nameIdentifier" class="tag">
 						<input class="half-width input-field tag-value" type="text" placeholder="[NAME IDENTIFIER]" title="nameIdentifier" value="" />
-						<select class="half-width input-field tag-attribute" type="text" title="nameIdentifierScheme" value="" />
-						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" /><button type="button" class="add single-tag">+</button>
+						<select class="half-width input-field tag-attribute" type="text" title="nameIdentifierScheme" value=""></select>
+						<input class="unbounded-width input-field tag-attribute" type="text" placeholder="[IDENTIFIER SCHEME URI]" title="schemeURI" value="" />
+						<button type="button" class="add single-tag">+</button>
 					</div>
 					<div title="affiliation" class="tag">
-						<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" /><button type="button" class="add single-tag">+</button>
-						<input class="language half-width input-field tag-attribute" id= "date" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
+						<input class="unbounded-width input-field tag-value" type="text" placeholder="[CONTRIBUTOR AFFILIATION]" title="affiliation" value="" />
+						<button type="button" class="add single-tag">+</button>
+						<input class="language half-width input-field tag-attribute" id= "date" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value=""/>
 					</div>
 				</div>
 			</div>
@@ -805,14 +965,14 @@
 		<span class="divider">&nbsp;</span>
 		<div title="dates" class="section wrapper-tag">
 			<span class="tag-group-label">Date(s):
-			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#date" target="_blank"> ?</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#date" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="date" class="tag">
 					<input class="half-width input-field tag-value" type="text" placeholder="[DATE]" title="date" value="" />
-					<input class="full-width input-field tag-attribute" type="text" placeholder="[DATE INFORMATION]" title="dateInformation" value="" />
 					<select class="half-width input-field tag-attribute" title="dateType"></select>
+					<textarea class="full-width input-field tag-attribute" type="text" placeholder="[DATE INFORMATION]" title="dateInformation" value=""></textarea>
 				</div>
 			</div>
 		</div>
@@ -834,14 +994,14 @@
 		</div>
 		<span class="divider">&nbsp;</span>
 		<div title="descriptions" class="section wrapper-tag">
-			<span class="tag-group-label">Description:
+			<span class="tag-group-label">Description(s):
 			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#description" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
 				<div title="description" class="tag">
-					<input class="half-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
-					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
+					<textarea class="full-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value=""></textarea>
+					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value=""/>
 					<select class="half-width input-field tag-attribute" title="descriptionType"></select>
 				</div>
 			</div>
@@ -935,7 +1095,7 @@
 		<span class="divider">&nbsp;</span>
 		<div title="alternateIdentifiers" class="section wrapper-tag">
 			<span class="tag-group-label">Alternate Identifier(s):
-			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#alternateidentifier" target="_blank"> ?</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#alternateidentifier" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
@@ -948,7 +1108,7 @@
 		<span class="divider">&nbsp;</span>
 		<div title="sizes" class="section wrapper-tag">
 			<span class="tag-group-label">Size(s):
-			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#size" target="_blank"> ?</a>
+			<a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/blob/master/BestPracticeGuide.md#size" target="_blank"> ? </a>
 			</span>
 			<button type="button" class="add group">+</button>
 			<div class="tag-group">
@@ -991,7 +1151,7 @@
 					<input class="full-width input-field tag-value" type="text" placeholder="[RIGHTS]" title="rights" value="" />
 					<input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[SCHEME URI]" title="schemeURI" value="" />
-					<input class="half-width input-field tag-attribute" type="text" placeholder="[RIGHTS IDENTTIFIER SCHEME]" title="rightsIdentifierScheme" value="" />
+					<input class="half-width input-field tag-attribute" type="text" placeholder="[RIGHTS IDENTIFIER SCHEME]" title="rightsIdentifierScheme" value=""/>
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[RIGHTS IDENTIFIER]" title="rightsIdentifier" value="" />
 					<input class="half-width input-field tag-attribute" type="text" placeholder="[RIGHTS URI]" title="rightsURI" value="" />
 				</div>
@@ -1025,7 +1185,14 @@
 			</div>
 		</div>
 	</div>
-	<br />
+	<br/>
+	<h5 class="reference">Reference</h5>
+	<p style="font-size: small;">
+		DataCite Metadata Working Group. (2019).
+		DataCite Metadata Schema Documentation for the Publication and Citation of Research Data.
+		Version 4.3. DataCite e.V.
+		https://doi.org/10.14454/7xq3-zf69
+	</p>
 </div>
 <div class="right hidden">
 	<h3 class="results">Metadata</h3>
