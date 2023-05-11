@@ -8,7 +8,7 @@
 <!-- modified: 2017-02-13 paluchm - Fixed ordering of givenName and familyName tags -->
 <!-- modified: 2017-04-01 paluchm - Updated ResourceType to allow empty value -->
 <!-- modified: 2017-10-05 r3r57 - Added IE support and straightforward XML download -->
-<!-- This form makes use of styles developed by the wet-boew project (https://github.com/wet-boew/wet-boew)  -->
+<!-- This form makes use of styles developed by the wet-boew project (https://github.com/wet-boew/wet-boew) -->
 <!-- Recommended browsers are Firefox, Chrome or Edge. Minimum supported IE version is 8. -->
 <!-- modified: 2019-10-09 osmancakirio - fixed the errors in multiple tags. (deleted german explanations) -->
 <!-- modified: 2019-10-09 osmancakirio - added lang attribute: title, publisher, subject, contributor, description, rights, awardTitle   -->
@@ -27,314 +27,314 @@
 <meta charset="utf-8" />
 <title>DataCite Metadata Generator - Kernel 4.4</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script type = "text/javascript" >
-                $(document).ready(function() {
-                        var kernelVersion = "4.4";
-                        var kernelNamespace = "http://datacite.org/schema/kernel-4";
-                        var kernelSchema = "http://schema.datacite.org/meta/kernel-4.4/metadata.xsd";
-                        var kernelSchemaLocation = kernelNamespace + " " + kernelSchema;
-                        var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<resource xmlns=\"" + kernelNamespace + "\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"" + kernelSchemaLocation + "\">" + br();
-                        $("select[title]").each(function() {
-                                var tagName = name($(this));
-                                ps($(this), optionValues[tagName]);
-                        });
-                        $("body").on("keyup", "input,textarea", function(event) {
-                                event.preventDefault();
-                                var xml = header;
-                                $("div.section").each(function() {
-                                        xml += process($(this));
-                                });
-                                xml += ct("resource");
-                                metadata = xml;
-                                $("div.right code").text(xml);
-                                $(".right").show();
-                        });
-                        $("body").on("change", "select", function(event) {
-                                event.preventDefault();
-                                $("input,textarea").eq(0).keyup();
-                        });
-                        $("#reset").bind("click", function(event) {
-                                event.preventDefault();
-                                location.reload(true);
-                        });
-                        $("#selectall").bind("click", function(event) {
-                                event.preventDefault();
-                                st($("div code").get(0));
-                        });
-                        $("button.add.group").bind("click", function(event) {
-                                event.preventDefault();
-                                var d = $(this).parent().find(".tag-group:first").clone();
-                                $(d).find("input,select,textarea").val("");
-                                $(d).find("input + button.delete.element,textarea + button.delete.element").each(function() {
-                                        $(this).prev("input,textarea").remove();
-                                        $(this).remove();
-                                });
-                                $("<button/>", {
-                                        "class": "delete group",
-                                        type: "button",
-                                        text: "-"
-                                }).appendTo($(d).find(".tag:first"));
-                                d.appendTo($(this).parent());
-                        });
-                        $("div.section").on("mouseenter mouseleave focusin focusout", "button.delete.group, button.delete.single-tag", function(event) {
-                                event.preventDefault();
-                                $(this).parent().toggleClass("remove-highlight");
-                        });
-                        $("div.section").on("click", "button.delete.group", function(event) {
-                                event.preventDefault();
-                                $(this).parent().remove();
-                                $("input,textarea").eq(0).keyup();
-                        });
-                        $("body").on("click", " button.add.single-tag", function(event) {
-                                event.preventDefault();
-                                var c = $(this).parent().clone();
-                                $(c).find("input,select,textarea").val("");
-                                $(this).before($("<button/>", {
-                                        "class": "delete single-tag",
-                                        type: "button",
-                                        text: "-"
-                                }));
-                                c.insertAfter($(this).parent());
-                                $(this).remove();
-                        });
-                        $("body").on("click", "button.delete.single-tag", function(event) {
-                                event.preventDefault();
-                                $(this).parent().remove();
-                                $("input,textarea").eq(0).keyup();
-                        });
-                        $("body").on("click", "button#more", function(event) {
-                                event.preventDefault();
-                                var div = $(this).parent();
-                                $(div).find("button#more").hide();
-                                $(div).find("div#subgroup,button#less").show();
-                        });
-                        $("body").on("click", "button#less", function(event) {
-                                event.preventDefault();
-                                var div = $(this).parent();
-                                $(div).find("div#subgroup,button#less").hide();
-                                $(div).find("button#more").show();
-                                $(div).find("div#subgroup input,div#subgroup select,div#subgroup textarea").val("");
-                                $("input,textarea").eq(0).keyup();
-                        });
-                        $("body").on("click", "h3.recommended,h3.other", function(event) {
-                                var div = $(this).next("div");
-                                var text = $(this).html();
-                                if (text.charAt(0) == "+") {
-                                        text = text.replace("+", "-");
-                                        $(this).html(text);
-                                        $(div).show();
-                                } else {
-                                        if (text.charAt(0) == "-") {
-                                                text = text.replace("-", "+");
-                                                $(this).html(text);
-                                                $(div).hide();
-                                        }
-                                }
-                        });
-                });
-                var optionValues = {};
-                optionValues["identifierType"] = ["DOI"]
-                // Not all options are recommended by BestPracticeGuide, for complete list add these options: "SeriesInformation", "TableOfContents", "Other"
-                optionValues["descriptionType"] = ["Abstract", "Methods", "TechnicalInfo"];
-                optionValues["relatedIdentifierType"] = ["ARK", "arXiv", "bibcode", "DOI", "EAN13", "EISSN", "Handle", "IGSN", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PURL", "UPC", "URL", "URN", "w3id"];
-                optionValues["relationType"] = ["HasVersion", "IsVersionOf", "IsNewVersionOf", "IsPreviousVersionOf", "IsVariantFormOf", "IsOriginalFormOf", "IsIdenticalTo", "Obsoletes", "IsObsoletedBy", "IsPartOf", "HasPart", "IsSourceOf", "IsDerivedFrom", "Continues", "IsContinuedBy", "IsSupplementTo", "IsSupplementedBy", "IsPublishedIn", "References", "IsReferencedBy", "Cites", "IsCitedBy", "Documents", "IsDocumentedBy", "HasMetadata", "IsMetadataFor", "Describes", "IsDescribedBy", "Reviews", "IsReviewedBy", "Requires", "IsRequiredBy", "Compiles", "IsCompiledBy"];
-                // Not all options are recommended by BestPracticeGuide, for complete list add these options: "DataPaper", "Event", "InteractiveResource", "PhysicalObject", "Service"
-                optionValues["resourceTypeGeneral"] = ["Audiovisual", "Book", "BookChapter", "Collection", "ComputationalNotebook", "ConferencePaper", "ConferenceProceeding", "Dataset", "Dissertation", "Image", "Journal", "JournalArticle", "Model", "OutputManagementPlan", "PeerReview", "Preprint", "Report", "Software", "Sound", "Standard", "Text", "Workflow", "Other"];
-                optionValues["dateType"] = ["Accepted", "Available", "Copyrighted", "Collected", "Created", "Issued", "Submitted", "Updated", "Valid", "Withdrawn", "Other"];
-                // Not all options are recommended by BestPracticeGuide, for complete list add these options: "Producer", "RegistrationAgency", "RegistrationAuthority", "RelatedPerson", "Other"
-                optionValues["contributorType"] = ["ContactPerson", "DataCollector", "DataCurator", "DataManager", "Distributor", "Editor", "HostingInstitution", "ProjectLeader", "ProjectManager", "ProjectMember", "Researcher", "ResearchGroup", "RightsHolder", "Sponsor", "Supervisor", "WorkPackageLeader"];
-                optionValues["titleType"] = ["AlternativeTitle", "Subtitle", "TranslatedTitle", "Other"];
-                optionValues["funderIdentifierType"] = ["Crossref Funder ID", "GRID", "ISNI", "ROR", "Other"];
-                optionValues["nameType"] = ["Personal", "Organizational"];
-                optionValues["nameIdentifierScheme"] = ["GND", "GRID", "ISNI", "ORCID", "ROR"];
-                optionValues["affiliationIdentifierScheme"] = ["ROR", "GRID", "ISNI", "Wikidata", "Crossref Funder ID", "Other"];
-                optionValues["subjectScheme"] = ["DDC", "GND", "wikidata"];
-                // Not all options are recommended by BestPracticeGuide, for complete list add these options: "DataPaper", "Event", "InteractiveResource", "PhysicalObject", "Service"
-                optionValues["relatedItemType"] = ["Audiovisual", "Book", "BookChapter", "Collection", "ComputationalNotebook", "ConferencePaper", "ConferenceProceeding", "Dataset", "Dissertation", "Image", "Journal", "JournalArticle", "Model", "OutputManagementPlan", "PeerReview", "Preprint", "Report", "Software", "Sound", "Standard", "Text", "Workflow", "Other"];
-                optionValues["relatedItemIdentifierType"]=["ARK", "arXiv", "bibcode", "DOI", "EAN13", "EISSN", "Handle", "IGSN", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PURL", "UPC", "URL", "URN"];
+<script type = "text/javascript" >
+    $(document).ready(function() {
+      var kernelVersion = "4.4";
+      var kernelNamespace = "http://datacite.org/schema/kernel-4";
+      var kernelSchema = "http://schema.datacite.org/meta/kernel-4.4/metadata.xsd";
+      var kernelSchemaLocation = kernelNamespace + " " + kernelSchema;
+      var header = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + br() + "<resource xmlns=\"" + kernelNamespace + "\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"" + kernelSchemaLocation + "\">" + br();
+      $("select[title]").each(function() {
+        var tagName = name($(this));
+        ps($(this), optionValues[tagName]);
+      });
+      $("body").on("keyup", "input,textarea", function(event) {
+        event.preventDefault();
+        var xml = header;
+        $("div.section").each(function() {
+          xml += process($(this));
+        });
+        xml += ct("resource");
+        metadata = xml;
+        $("div.right code").text(xml);
+        $(".right").show();
+      });
+      $("body").on("change", "select", function(event) {
+        event.preventDefault();
+        $("input,textarea").eq(0).keyup();
+      });
+      $("#reset").bind("click", function(event) {
+        event.preventDefault();
+        location.reload(true);
+      });
+      $("#selectall").bind("click", function(event) {
+        event.preventDefault();
+        st($("div code").get(0));
+      });
+      $("button.add.group").bind("click", function(event) {
+        event.preventDefault();
+        var d = $(this).parent().find(".tag-group:first").clone();
+        $(d).find("input,select,textarea").val("");
+        $(d).find("input + button.delete.element,textarea + button.delete.element").each(function() {
+          $(this).prev("input,textarea").remove();
+          $(this).remove();
+        });
+        $("<button/>", {
+          "class": "delete group",
+          type: "button",
+          text: "-"
+        }).appendTo($(d).find(".tag:first"));
+        d.appendTo($(this).parent());
+      });
+      $("div.section").on("mouseenter mouseleave focusin focusout", "button.delete.group, button.delete.single-tag", function(event) {
+        event.preventDefault();
+        $(this).parent().toggleClass("remove-highlight");
+      });
+      $("div.section").on("click", "button.delete.group", function(event) {
+        event.preventDefault();
+        $(this).parent().remove();
+        $("input,textarea").eq(0).keyup();
+      });
+      $("body").on("click", " button.add.single-tag", function(event) {
+        event.preventDefault();
+        var c = $(this).parent().clone();
+        $(c).find("input,select,textarea").val("");
+        $(this).before($("<button/>", {
+          "class": "delete single-tag",
+          type: "button",
+          text: "-"
+        }));
+        c.insertAfter($(this).parent());
+        $(this).remove();
+      });
+      $("body").on("click", "button.delete.single-tag", function(event) {
+        event.preventDefault();
+        $(this).parent().remove();
+        $("input,textarea").eq(0).keyup();
+      });
+      $("body").on("click", "button#more", function(event) {
+        event.preventDefault();
+        var div = $(this).parent();
+        $(div).find("button#more").hide();
+        $(div).find("div#subgroup,button#less").show();
+      });
+      $("body").on("click", "button#less", function(event) {
+        event.preventDefault();
+        var div = $(this).parent();
+        $(div).find("div#subgroup,button#less").hide();
+        $(div).find("button#more").show();
+        $(div).find("div#subgroup input,div#subgroup select,div#subgroup textarea").val("");
+        $("input,textarea").eq(0).keyup();
+      });
+      $("body").on("click", "h3.recommended,h3.other", function(event) {
+        var div = $(this).next("div");
+        var text = $(this).html();
+        if (text.charAt(0) == "+") {
+          text = text.replace("+", "-");
+          $(this).html(text);
+          $(div).show();
+        } else {
+          if (text.charAt(0) == "-") {
+            text = text.replace("-", "+");
+            $(this).html(text);
+            $(div).hide();
+          }
+        }
+      });
+    });
+    var optionValues = {};
+    optionValues["identifierType"] = ["DOI"]
+    // Not all options are recommended by BestPracticeGuide, for complete list add these options: "SeriesInformation", "TableOfContents", "Other"
+    optionValues["descriptionType"] = ["Abstract", "Methods", "TechnicalInfo"];
+    optionValues["relatedIdentifierType"] = ["ARK", "arXiv", "bibcode", "DOI", "EAN13", "EISSN", "Handle", "IGSN", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PURL", "UPC", "URL", "URN", "w3id"];
+    optionValues["relationType"] = ["HasVersion", "IsVersionOf", "IsNewVersionOf", "IsPreviousVersionOf", "IsVariantFormOf", "IsOriginalFormOf", "IsIdenticalTo", "Obsoletes", "IsObsoletedBy", "IsPartOf", "HasPart", "IsSourceOf", "IsDerivedFrom", "Continues", "IsContinuedBy", "IsSupplementTo", "IsSupplementedBy", "IsPublishedIn", "References", "IsReferencedBy", "Cites", "IsCitedBy", "Documents", "IsDocumentedBy", "HasMetadata", "IsMetadataFor", "Describes", "IsDescribedBy", "Reviews", "IsReviewedBy", "Requires", "IsRequiredBy", "Compiles", "IsCompiledBy"];
+    // Not all options are recommended by BestPracticeGuide, for complete list add these options: "DataPaper", "Event", "InteractiveResource", "PhysicalObject", "Service"
+    optionValues["resourceTypeGeneral"] = ["Audiovisual", "Book", "BookChapter", "Collection", "ComputationalNotebook", "ConferencePaper", "ConferenceProceeding", "Dataset", "Dissertation", "Image", "Journal", "JournalArticle", "Model", "OutputManagementPlan", "PeerReview", "Preprint", "Report", "Software", "Sound", "Standard", "Text", "Workflow", "Other"];
+    optionValues["dateType"] = ["Accepted", "Available", "Copyrighted", "Collected", "Created", "Issued", "Submitted", "Updated", "Valid", "Withdrawn", "Other"];
+    // Not all options are recommended by BestPracticeGuide, for complete list add these options: "Producer", "RegistrationAgency", "RegistrationAuthority", "RelatedPerson", "Other"
+    optionValues["contributorType"] = ["ContactPerson", "DataCollector", "DataCurator", "DataManager", "Distributor", "Editor", "HostingInstitution", "ProjectLeader", "ProjectManager", "ProjectMember", "Researcher", "ResearchGroup", "RightsHolder", "Sponsor", "Supervisor", "WorkPackageLeader"];
+    optionValues["titleType"] = ["AlternativeTitle", "Subtitle", "TranslatedTitle", "Other"];
+    optionValues["funderIdentifierType"] = ["Crossref Funder ID", "GRID", "ISNI", "ROR", "Other"];
+    optionValues["nameType"] = ["Personal", "Organizational"];
+    optionValues["nameIdentifierScheme"] = ["GND", "GRID", "ISNI", "ORCID", "ROR"];
+    optionValues["affiliationIdentifierScheme"] = ["ROR", "GRID", "ISNI", "Wikidata", "Crossref Funder ID", "Other"];
+    optionValues["subjectScheme"] = ["DDC", "GND", "wikidata"];
+    // Not all options are recommended by BestPracticeGuide, for complete list add these options: "DataPaper", "Event", "InteractiveResource", "PhysicalObject", "Service"
+    optionValues["relatedItemType"] = ["Audiovisual", "Book", "BookChapter", "Collection", "ComputationalNotebook", "ConferencePaper", "ConferenceProceeding", "Dataset", "Dissertation", "Image", "Journal", "JournalArticle", "Model", "OutputManagementPlan", "PeerReview", "Preprint", "Report", "Software", "Sound", "Standard", "Text", "Workflow", "Other"];
+    optionValues["relatedItemIdentifierType"]=["ARK", "arXiv", "bibcode", "DOI", "EAN13", "EISSN", "Handle", "IGSN", "ISBN", "ISSN", "ISTC", "LISSN", "LSID", "PMID", "PURL", "UPC", "URL", "URN"];
 
-                function process(section) {
-                        var isWrapper = $(section).hasClass("wrapper-tag");
-                        var indent = 0;
-                        var xml = "";
-                        if (isWrapper) {
-                                indent = 1;
-                        }
-                        $(section).find(".tag-group>.tag").each(function() {
-                                xml += processTag(this, indent);
-                        });
-                        if (xml.length > 0) {
-                                if (isWrapper) {
-                                        var wrapperName = name(section);
-                                        xml = ot(wrapperName) + br() + xml + ct(wrapperName) + br();
-                                }
-                        }
-                        return xml;
-                }
+		function process(section) {
+			var isWrapper = $(section).hasClass("wrapper-tag");
+			var indent = 0;
+			var xml = "";
+			if (isWrapper) {
+				indent = 1;
+			}
+			$(section).find(".tag-group>.tag").each(function() {
+				xml += processTag(this, indent);
+			});
+			if (xml.length > 0) {
+				if (isWrapper) {
+					var wrapperName = name(section);
+					xml = ot(wrapperName) + br() + xml + ct(wrapperName) + br();
+				}
+			}
+			return xml;
+		}
 
-                function processTag(tag, indent) {
-                        var xml = "";
-                        var attributes;
-                        var value;
-                        var tagName = name(tag);
-                        var attr = attribs(tag);
-                        var tagValues = $(tag).children(".tag-value");
-                        if ($(tagValues).length) {
-                                value = inputValue(tagValues[0]);
-                        }
-                        $(tag).children(".tag").each(function() {
-                                xml += processTag(this, indent + 1);
-                        });
-                        if (xml.length > 0) {
-                                xml = tab(indent) + ota(tagName, attr) + br() + xml + tab(indent) + ct(tagName) + br();
-                        } else if (typeof value !== "undefined" && (value.length > 0 || ($(tag).hasClass("allow-empty") && attr.length > 0))) {
-                                xml = tab(indent) + ota(tagName, attr) + value + ct(tagName) + br();
-                        }
-                        return xml;
-                }
+		function processTag(tag, indent) {
+			var xml = "";
+			var attributes;
+			var value;
+			var tagName = name(tag);
+			var attr = attribs(tag);
+			var tagValues = $(tag).children(".tag-value");
+			if ($(tagValues).length) {
+				value = inputValue(tagValues[0]);
+			}
+			$(tag).children(".tag").each(function() {
+				xml += processTag(this, indent + 1);
+			});
+			if (xml.length > 0) {
+				xml = tab(indent) + ota(tagName, attr) + br() + xml + tab(indent) + ct(tagName) + br();
+			} else if (typeof value !== "undefined" && (value.length > 0 || ($(tag).hasClass("allow-empty") && attr.length > 0))) {
+				xml = tab(indent) + ota(tagName, attr) + value + ct(tagName) + br();
+			}
+			return xml;
+		}
 
-                function attribs(element) {
-                        var attribs = "";
-                        $(element).children(".tag-attribute").each(function() {
-                                var value = "";
-                                var n = name(this);
-                                if ($(this).is("input") || $(this).is("textarea")) {
-                                        value = inputValue(this);
-                                }
-                                if ($(this).is("select")) {
-                                        value = selectValue(this);
-                                }
-                                if (value.length > 0) {
-                                        if (attribs.length > 0) {
-                                                attribs += " ";
-                                        }
-                                        attribs += n + "=\"" + value + "\"";
-                                }
-                        });
-                        return attribs;
-                }
+    function attribs(element) {
+      var attribs = "";
+      $(element).children(".tag-attribute").each(function() {
+        var value = "";
+        var n = name(this);
+        if ($(this).is("input") || $(this).is("textarea")) {
+          value = inputValue(this);
+        }
+        if ($(this).is("select")) {
+          value = selectValue(this);
+        }
+        if (value.length > 0) {
+          if (attribs.length > 0) {
+            attribs += " ";
+          }
+          attribs += n + "=\"" + value + "\"";
+        }
+      });
+      return attribs;
+    }
 
-                function inputValue(input) {
-                        return $(input).val().encodeXML();
-                }
+		function inputValue(input) {
+			return $(input).val().encodeXML();
+		}
 
-                function selectValue(select) {
-                        return $(select).find("option").filter(":selected").val().encodeXML();
-                }
+		function selectValue(select) {
+			return $(select).find("option").filter(":selected").val().encodeXML();
+		}
 
-                function name(tag) {
-                        return $(tag).attr("title");
-                }
+		function name(tag) {
+			return $(tag).attr("title");
+		}
 
-                function ps(s, sarr) {
-                        var i = $(s).attr("title");
-                        addO(s, "", "[" + i + "]");
-                        for (var i = 0; i < sarr.length; i++) {
-                                addO(s, sarr[i], sarr[i]);
-                        }
-                }
+		function ps(s, sarr) {
+			var i = $(s).attr("title");
+			addO(s, "", "[" + i + "]");
+			for (var i = 0; i < sarr.length; i++) {
+				addO(s, sarr[i], sarr[i]);
+			}
+		}
 
-                function addO(s, v, d) {
-                        $(s).append($("<option>").val(v).html(d));
-                }
+		function addO(s, v, d) {
+			$(s).append($("<option>").val(v).html(d));
+		}
 
-                function br() {
-                        return "\n";
-                }
+		function br() {
+			return "\n";
+		}
 
-                function tab(number) {
-                        var tabs = "";
-                        if (typeof number !== "undefined") {
-                                for (var i = 1; i <= number; i++) {
-                                        tabs += "\t";
-                                }
-                        } else {
-                                tabs = "\t";
-                        }
-                        return tabs;
-                }
+		function tab(number) {
+			var tabs = "";
+			if (typeof number !== "undefined") {
+				for (var i = 1; i <= number; i++) {
+					tabs += "\t";
+				}
+			} else {
+				tabs = "\t";
+			}
+			return tabs;
+		}
 
-                function ota(tag, attr) {
-                        if (attr.length > 0) {
-                                return "<" + tag + " " + attr + ">";
-                        } else {
-                                return ot(tag);
-                        }
-                }
+		function ota(tag, attr) {
+			if (attr.length > 0) {
+				return "<" + tag + " " + attr + ">";
+			} else {
+				return ot(tag);
+			}
+		}
 
-                function ot(tag) {
-                        return "<" + tag + ">";
-                }
+		function ot(tag) {
+			return "<" + tag + ">";
+		}
 
-                function ct(tag) {
-                        return "</" + tag + ">";
-                }
+		function ct(tag) {
+			return "</" + tag + ">";
+		}
 
-                function st(element) {
-                        var doc = document,
-                                        text = element,
-                                        range, selection;
-                        if (doc.body.createTextRange) {
-                                range = doc.body.createTextRange();
-                                range.moveToElementText(text);
-                                range.select();
-                        } else {
-                                if (window.getSelection) {
-                                        selection = window.getSelection();
-                                        range = doc.createRange();
-                                        range.selectNodeContents(text);
-                                        selection.removeAllRanges();
-                                        selection.addRange(range);
-                                }
-                        }
-                }
-                String.prototype.encodeXML = function() {
-                        return this.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
-                };
-                var metadata = "";
-                var MIME_TYPE = "application/xml";
-                var cleanUp = function(a) {
-                        setTimeout(function() {
-                                window.URL.revokeObjectURL(a.href);
-                        }, 1500);
-                        $("span#output").html("");
-                };
-                var downloadFile = function() {
-                        window.URL = window.webkitURL || window.URL;
-                        var prevLink = $("span#output a");
-                        if (prevLink) {
-                                $("span#output").html("");
-                        }
-                        var bb = new Blob([metadata], {
-                                type: MIME_TYPE
-                        });
-                        if (navigator.msSaveBlob) {
-                                navigator.msSaveBlob(bb, "metadata.xml");
-                        } else {
-                                var a = document.createElement("a");
-                                a.download = "metadata.xml";
-                                a.href = window.URL.createObjectURL(bb);
-                                a.onclick = function(e) {
-                                        if ($(this).is(":disabled")) {
-                                                return false;
-                                        }
-                                        cleanUp(this);
-                                };
-                                $(a).appendTo($("span#output"));
-                                $(a)[0].click();
-                        }
-                };
+		function st(element) {
+			var doc = document,
+					text = element,
+					range, selection;
+			if (doc.body.createTextRange) {
+				range = doc.body.createTextRange();
+				range.moveToElementText(text);
+				range.select();
+			} else {
+				if (window.getSelection) {
+					selection = window.getSelection();
+					range = doc.createRange();
+					range.selectNodeContents(text);
+					selection.removeAllRanges();
+					selection.addRange(range);
+				}
+			}
+		}
+		String.prototype.encodeXML = function() {
+			return this.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+		};
+		var metadata = "";
+		var MIME_TYPE = "application/xml";
+		var cleanUp = function(a) {
+			setTimeout(function() {
+				window.URL.revokeObjectURL(a.href);
+			}, 1500);
+			$("span#output").html("");
+		};
+		var downloadFile = function() {
+			window.URL = window.webkitURL || window.URL;
+			var prevLink = $("span#output a");
+			if (prevLink) {
+				$("span#output").html("");
+			}
+			var bb = new Blob([metadata], {
+				type: MIME_TYPE
+			});
+			if (navigator.msSaveBlob) {
+				navigator.msSaveBlob(bb, "metadata.xml");
+			} else {
+				var a = document.createElement("a");
+				a.download = "metadata.xml";
+				a.href = window.URL.createObjectURL(bb);
+				a.onclick = function(e) {
+					if ($(this).is(":disabled")) {
+						return false;
+					}
+					cleanUp(this);
+				};
+				$(a).appendTo($("span#output"));
+				$(a)[0].click();
+			}
+		};
 
-                function save() {
-                        if (false) {
-                                alert("Not currently supported in Internet Explorer");
-                        } else {
-                                downloadFile();
-                        }
-                };
-        </script>
+    function save() {
+      if (false) {
+        alert("Not currently supported in Internet Explorer");
+      } else {
+        downloadFile();
+      }
+    };
+  </script>
 
-        <style>
+  <style>
                 body{
                         font-family:sans-serif
                 }
@@ -707,7 +707,7 @@
                 #date{
                         margin-right: 76%;
                 }
-        </style>
+  </style>
 </head>
 <body>
 <h2 class="pagetitle">DataCite Metadata Generator - Kernel 4.4</h2>
@@ -766,7 +766,7 @@
                                                 <select class="half-width input-field tag-attribute" type="text" title="nameIdentifierScheme" value=""></select>
                                                 <button type="button" class="add single-tag">+</button>
                                                 <input class="half-width input-field tag-attribute" type="text" placeholder="[NAME IDENTIFIER SCHEME URI]" title="schemeURI" value=""/>
-                                                
+
                                         </div>
                                         <!-- Affiliation -->
                                         <div title="affiliation" class="tag">
@@ -1088,9 +1088,7 @@
                                 </div>
                         </div>
                 </div>
-
                 <span class="divider">&nbsp;</span>
-               
                        <div title="relatedItems" class="section wrapper-tag">
                         <span class="tag-group-label">Related Item(s):
                         <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#20-relatedItem-o" target="_blank"> ? </a>
@@ -1120,32 +1118,32 @@
 
                                          <div title="publicationYear" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[PUBLICATION YEAR]" title="publicationYear" value="">
-                                                
+
                                         </div>
 
                                         <div title="volume" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[VOLUME]" title="volume" value="">
-                                                
+
                                         </div>
-                                       
+
                                         <div title="issue" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[ISSUE]" title="issue" value="">
-                                                
+
                                         </div>
 
                                         <div title="firstPage" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[FIRSTPAGE]" title="firstPage" value="">
-                                                
+
                                         </div>
 
                                         <div title="lastPage" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[LASTPAGE]" title="lastPage" value="">
-                                                
+
                                         </div>
 
                                         <div title="publisher" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[PUBLISHER]" title="publisher" value="">
-                                                
+
                                         </div>
                                 </div>
                         </div>
@@ -1165,15 +1163,15 @@
         </ul>
 </div>
 <div class="right hidden">
-        <h3 class="results">Metadata</h3>
-        <div class="form results">
-                <pre><code style="display:inline-block;"></code></pre>
-        </div>
-        <br />
-        <button type="button" id="download" onclick="save()">Save as file</button>
-        <button type="button" id="reset">Reset</button>
-        <button type="button" id="selectall">Select All</button>
-        <span class="output" id="output"></span>
+	<h3 class="results">Metadata</h3>
+	<div class="form results">
+		<pre><code style="display:inline-block;"></code></pre>
+	</div>
+	<br />
+	<button type="button" id="download" onclick="save()">Save as file</button>
+	<button type="button" id="reset">Reset</button>
+	<button type="button" id="selectall">Select All</button>
+	<span class="output" id="output"></span>
 </div>
 </body>
 </html>
