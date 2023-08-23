@@ -20,6 +20,7 @@
 <!-- fixed: 2022-01-26 afrech: resource schema updated -->
 <!-- fixed: 2022-02-11 mspenger: Updated to Kernel 4.3 -->
 <!-- modified: 2022-12-13 afrech, cbayer, mspenger: Updated to Kernel 4.4 ; added: relatedItem ; update: optionValues, links -->
+<!-- modified: 2023-08-23 lmeier - added textarea as input for description -->
 
 
 <head>
@@ -37,7 +38,7 @@
                                 var tagName = name($(this));
                                 ps($(this), optionValues[tagName]);
                         });
-                        $("body").on("keyup", "input", function(event) {
+                        $("body").on("keyup", "input,textarea", function(event) {
                                 event.preventDefault();
                                 var xml = header;
                                 $("div.section").each(function() {
@@ -50,7 +51,7 @@
                         });
                         $("body").on("change", "select", function(event) {
                                 event.preventDefault();
-                                $("input").eq(0).keyup();
+                                $("input,textarea").eq(0).keyup();
                         });
                         $("#reset").bind("click", function(event) {
                                 event.preventDefault();
@@ -63,9 +64,9 @@
                         $("button.add.group").bind("click", function(event) {
                                 event.preventDefault();
                                 var d = $(this).parent().find(".tag-group:first").clone();
-                                $(d).find("input,select").val("");
-                                $(d).find("input + button.delete.element").each(function() {
-                                        $(this).prev("input").remove();
+                                $(d).find("input,select,textarea").val("");
+                                $(d).find("input + button.delete.element,textarea + button.delete.element").each(function() {
+                                        $(this).prev("input,textarea").remove();
                                         $(this).remove();
                                 });
                                 $("<button/>", {
@@ -82,12 +83,12 @@
                         $("div.section").on("click", "button.delete.group", function(event) {
                                 event.preventDefault();
                                 $(this).parent().remove();
-                                $("input").eq(0).keyup();
+                                $("input,textarea").eq(0).keyup();
                         });
                         $("body").on("click", " button.add.single-tag", function(event) {
                                 event.preventDefault();
                                 var c = $(this).parent().clone();
-                                $(c).find("input,select").val("");
+                                $(c).find("input,select,textarea").val("");
                                 $(this).before($("<button/>", {
                                         "class": "delete single-tag",
                                         type: "button",
@@ -99,7 +100,7 @@
                         $("body").on("click", "button.delete.single-tag", function(event) {
                                 event.preventDefault();
                                 $(this).parent().remove();
-                                $("input").eq(0).keyup();
+                                $("input,textarea").eq(0).keyup();
                         });
                         $("body").on("click", "button#more", function(event) {
                                 event.preventDefault();
@@ -112,8 +113,8 @@
                                 var div = $(this).parent();
                                 $(div).find("div#subgroup,button#less").hide();
                                 $(div).find("button#more").show();
-                                $(div).find("div#subgroup input,div#subgroup select").val("");
-                                $("input").eq(0).keyup();
+                                $(div).find("div#subgroup input,div#subgroup select,div#subgroup textarea").val("");
+                                $("input,textarea").eq(0).keyup();
                         });
                         $("body").on("click", "h3.recommended,h3.other", function(event) {
                                 var div = $(this).next("div");
@@ -191,7 +192,7 @@
                         $(element).children(".tag-attribute").each(function() {
                                 var value = "";
                                 var n = name(this);
-                                if ($(this).is("input")) {
+                                if ($(this).is("input") || $(this).is("textarea")) {
                                         value = inputValue(this);
                                 }
                                 if ($(this).is("select")) {
@@ -888,7 +889,7 @@
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
                                 <div title="description" class="tag">
-                                        <input class="half-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value="" />
+                                        <textarea class="full-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value=""></textarea>
                                         <input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
                                         <select class="half-width input-field tag-attribute" title="descriptionType"></select>
                                 </div>
