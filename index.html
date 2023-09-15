@@ -24,9 +24,9 @@
 <!-- modified: 2023-08-23 samuel-rosa, lmeier - Add missing options: descriptionType, resourceTypeGeneral, contributorType, relatedItemType; dateInformation: use textarea instead of input; add identifierType = ["DOI"] (more identifiers may be used in the future -- see DataCite road map); affiliationIdentifierScheme: adds options; adds reference section -->
 
 <head>
-<meta charset="utf-8" />
-<title>DataCite Metadata Generator - Kernel 4.4</title>
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <meta charset="utf-8" />
+        <title>DataCite Metadata Generator - Kernel 4.4</title>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
         <script type = "text/javascript" >
                 $(document).ready(function() {
                         var kernelVersion = "4.4";
@@ -717,12 +717,12 @@
                 <!-- Identifier -->
                 <div title="identifier" class="section wrapper-tag">
                         <span class="tag-group-label">Identifier:
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#11-alternateidentifier-o" target="_blank"> ?</a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#11-alternateidentifier-o" target="_blank"> ?</a>
                         </span>
                         <div class="tag-group">
                                 <div title="identifier" class="tag">
                                         <input class="half-width input-field tag-value" type="text" placeholder="[IDENTIFIER]" title="Identifier" value=""/>
-				        <select class="half-width input-field tag-attribute" title="identifierType"></select>
+                                        <select class="half-width input-field tag-attribute" title="identifierType"></select>
                                 </div>
                         </div>
                 </div>
@@ -730,7 +730,7 @@
                 <!-- Title(s) -->
                 <div title="titles" class="section wrapper-tag">
                         <span class="tag-group-label">Title(s):
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#3-title-m" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#3-title-m" target="_blank"> ? </a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
@@ -746,7 +746,7 @@
                 <!-- Creator(s) -->
                 <div title="creators" class="section wrapper-tag">
                         <span class="tag-group-label">Creator(s):
-                          <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#2-creator-m" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#2-creator-m" target="_blank"> ? </a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
@@ -766,7 +766,7 @@
                                                 <select class="half-width input-field tag-attribute" type="text" title="nameIdentifierScheme" value=""></select>
                                                 <button type="button" class="add single-tag">+</button>
                                                 <input class="half-width input-field tag-attribute" type="text" placeholder="[NAME IDENTIFIER SCHEME URI]" title="schemeURI" value=""/>
-                                                
+
                                         </div>
                                         <!-- Affiliation -->
                                         <div title="affiliation" class="tag">
@@ -774,8 +774,8 @@
                                                 <input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value=""/>
                                                 <button type="button" class="add single-tag">+</button>
                                                 <input class="half-width input-field tag-value" type="text" placeholder="[AFFILIATION IDENTIFIER]" title="affiliationIdentifier" value=""/>
-						<select class="half-width input-field tag-attribute" type="text" title="affiliationIdentifierScheme" value=""></select>
-						<input class="half-width input-field tag-attribute" type="text" placeholder="[AFFILIATION IDENTIFIER SCHEME URI]" title="schemeURI" value=""/>
+                                                <select class="half-width input-field tag-attribute" type="text" title="affiliationIdentifierScheme" value=""></select>
+                                                <input class="half-width input-field tag-attribute" type="text" placeholder="[AFFILIATION IDENTIFIER SCHEME URI]" title="schemeURI" value=""/>
                                         </div>
                                 </div>
                         </div>
@@ -784,7 +784,7 @@
                 <!-- Publisher -->
                 <div class="section">
                         <span class="tag-group-label">Publisher:
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#4-publisher-m" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#4-publisher-m" target="_blank"> ? </a>
                         </span>
                         <div class="tag-group">
                                 <div title="publisher" class="tag">
@@ -796,7 +796,7 @@
                 <span class="divider">&nbsp;</span>
                 <div class="section">
                         <span class="tag-group-label">Publication Year:
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#5-publicationyear-m" target="_blank">?</a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#5-publicationyear-m" target="_blank">?</a>
                         </span>
                         <div class="tag-group">
                                 <div title="publicationYear" class="tag">
@@ -807,7 +807,7 @@
                 <span class="divider">&nbsp;</span>
                 <div class="section">
                         <span class="tag-group-label">Resource Type:
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#10-resourcetype-m" target="_blank">?</a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#10-resourcetype-m" target="_blank">?</a>
                         </span>
                         <div class="tag-group">
                                 <div title="resourceType" class="tag allow-empty">
@@ -821,7 +821,7 @@
         <div id="recommended" class="form recommended hidden">
                 <div title="subjects" class="section wrapper-tag">
                         <span class="tag-group-label">Subject(s):
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#6-subject-m" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#6-subject-m" target="_blank"> ? </a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
@@ -837,7 +837,7 @@
                 <span class="divider">&nbsp;</span>
                 <div title="contributors" class="section wrapper-tag">
                         <span class="tag-group-label">Contributor(s):
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#7-contributor-r" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#7-contributor-r" target="_blank"> ? </a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
@@ -869,7 +869,7 @@
                 <span class="divider">&nbsp;</span>
                 <div title="dates" class="section wrapper-tag">
                         <span class="tag-group-label">Date(s):
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#8-date-r" target="_blank"> ?</a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#8-date-r" target="_blank"> ?</a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
@@ -883,7 +883,7 @@
                 <span class="divider">&nbsp;</span>
                 <div title="relatedIdentifiers" class="section wrapper-tag">
                         <span class="tag-group-label">Related Identifier(s):
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#12-relatedidentifier-r" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#12-relatedidentifier-r" target="_blank"> ? </a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
@@ -899,7 +899,7 @@
                 <span class="divider">&nbsp;</span>
                 <div title="descriptions" class="section wrapper-tag">
                         <span class="tag-group-label">Description(s):
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#17-description-m" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#17-description-m" target="_blank"> ? </a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
@@ -916,7 +916,7 @@
                         <div class="tag-group">
                                 <div title="geoLocation" class="tag">
                                         <span class="tag-group-label">Geo Location Place:
-                                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#18-geolocation-r" target="_blank"> ? </a>
+                                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#18-geolocation-r" target="_blank"> ? </a>
                                         </span>
                                         <div title="geoLocationPlace" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[GEO LOCATION PLACE]" title="geoLocationPlace" value="" />
@@ -988,7 +988,7 @@
         <div id="other" class="form other hidden">
                 <div class="section">
                         <span class="tag-group-label">Language:
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#9-language-o" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#9-language-o" target="_blank"> ? </a>
                         </span>
                         <div class="tag-group">
                                 <div title="language" class="tag">
@@ -999,7 +999,7 @@
                 <span class="divider">&nbsp;</span>
                 <div title="alternateIdentifiers" class="section wrapper-tag">
                         <span class="tag-group-label">Alternate Identifier(s):
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#11-alternateidentifier-o" target="_blank"> ?</a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#11-alternateidentifier-o" target="_blank"> ?</a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
@@ -1012,7 +1012,7 @@
                 <span class="divider">&nbsp;</span>
                 <div title="sizes" class="section wrapper-tag">
                         <span class="tag-group-label">Size(s):
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#13-size-r" target="_blank"> ?</a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#13-size-r" target="_blank"> ?</a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
@@ -1024,7 +1024,7 @@
                 <span class="divider">&nbsp;</span>
                 <div title="formats" class="section wrapper-tag">
                         <span class="tag-group-label">Format(s):
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#14-format-o" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#14-format-o" target="_blank"> ? </a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
@@ -1036,7 +1036,7 @@
                 <span class="divider">&nbsp;</span>
                 <div class="section">
                         <span class="tag-group-label">Version:
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#15-version-o" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#15-version-o" target="_blank"> ? </a>
                         </span>
                         <div class="tag-group">
                                 <div title="version" class="tag">
@@ -1047,7 +1047,7 @@
                 <span class="divider">&nbsp;</span>
                 <div title="rightsList" class="section wrapper-tag">
                         <span class="tag-group-label">Rights List:
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#16-rights-m" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#16-rights-m" target="_blank"> ? </a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
@@ -1064,7 +1064,7 @@
                 <span class="divider">&nbsp;</span>
                 <div title="fundingReferences" class="section wrapper-tag">
                         <span class="tag-group-label">Funding Reference:
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#19-fundingreference-o" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#19-fundingreference-o" target="_blank"> ? </a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
@@ -1080,7 +1080,6 @@
                                                 <input class="half-width input-field tag-value" type="text" placeholder="[AWARD NUMBER]" title="awardNumber" value="" />
                                                 <input class="half-width input-field tag-attribute" type="text" placeholder="[AWARD URI]" title="awardURI" value="" />
                                         </div>
-
                                         <div title="awardTitle" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[AWARD TITLE]" title="awardTitle" value="" />
                                                 <input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
@@ -1090,17 +1089,17 @@
                 </div>
 
                 <span class="divider">&nbsp;</span>
-               
-                       <div title="relatedItems" class="section wrapper-tag">
+
+                <div title="relatedItems" class="section wrapper-tag">
                         <span class="tag-group-label">Related Item(s):
-                        <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#20-relatedItem-o" target="_blank"> ? </a>
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#20-relatedItem-o" target="_blank"> ? </a>
                         </span>
                         <button type="button" class="add group">+</button>
                         <div class="tag-group">
                                 <div title="relatedItem" class="tag">
 
-                                         <select class="half-width input-field tag-attribute" title="relatedItemType"></select>
-                                         <select class="half-width input-field tag-attribute" title="relationType"></select>
+                                        <select class="half-width input-field tag-attribute" title="relatedItemType"></select>
+                                        <select class="half-width input-field tag-attribute" title="relationType"></select>
 
                                         <div title="relatedItemIdentifier" class="tag">
                                                 <input class="half-width input-field tag-value" type="text" placeholder="[RELATED ITEM IDENTIFIER]" title="relatedItemIdentifier" value="" />
@@ -1112,40 +1111,40 @@
                                                         <div title="title" class="tag">
                                                                 <input class="full-width input-field tag-value" type="text" placeholder="[TITLE]" title="title" value="" />
                                                                 <input class="language input-field tag-attribute" type="text"  maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
-                                                                <span class="tag-group-info-language" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#what-is-the-language-of-the-metadata" target="_blank"> ?</span>
+                                                                <a class="tag-group-info-language" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#what-is-the-language-of-the-metadata" target="_blank"> ? </a>
                                                                 <select class="language half-width input-field tag-attribute" title="titleType"></select>
                                                                 <button type="button" class="add single-tag">+</button>
                                                         </div>
-                                         </div>
+                                        </div>
 
-                                         <div title="publicationYear" class="tag">
+                                        <div title="publicationYear" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[PUBLICATION YEAR]" title="publicationYear" value="">
-                                                
+
                                         </div>
 
                                         <div title="volume" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[VOLUME]" title="volume" value="">
-                                                
+
                                         </div>
-                                       
+
                                         <div title="issue" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[ISSUE]" title="issue" value="">
-                                                
+
                                         </div>
 
                                         <div title="firstPage" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[FIRSTPAGE]" title="firstPage" value="">
-                                                
+
                                         </div>
 
                                         <div title="lastPage" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[LASTPAGE]" title="lastPage" value="">
-                                                
+
                                         </div>
 
                                         <div title="publisher" class="tag">
                                                 <input class="full-width input-field tag-value" type="text" placeholder="[PUBLISHER]" title="publisher" value="">
-                                                
+
                                         </div>
                                 </div>
                         </div>
