@@ -22,6 +22,7 @@
 <!-- modified: 2022-12-13 afrech, cbayer, mspenger: Updated to Kernel 4.4 ; added: relatedItem ; update: optionValues, links -->
 <!-- modified: 2023-08-23 lmeier - added textarea as input for description -->
 <!-- modified: 2023-08-23 samuel-rosa, lmeier - Add missing options: descriptionType, resourceTypeGeneral, contributorType, relatedItemType; dateInformation: use textarea instead of input; add identifierType = ["DOI"] (more identifiers may be used in the future -- see DataCite road map); affiliationIdentifierScheme: adds options; adds reference section -->
+<!-- modified: 2023-09-21 lmeier - change order of fields in recommended elements: prioritize description -->
 
 <head>
         <meta charset="utf-8" />
@@ -819,6 +820,20 @@
         </div>
         <h3 class="recommended">+ Recommended Elements</h3>
         <div id="recommended" class="form recommended hidden">
+                <div title="descriptions" class="section wrapper-tag">
+                        <span class="tag-group-label">Description(s):
+                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#17-description-m" target="_blank"> ? </a>
+                        </span>
+                        <button type="button" class="add group">+</button>
+                        <div class="tag-group">
+                                <div title="description" class="tag">
+                                        <textarea class="full-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value=""></textarea>
+                                        <input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value=""/>
+                                        <select class="half-width input-field tag-attribute" title="descriptionType"></select>
+                                </div>
+                        </div>
+                </div>
+                <span class="divider">&nbsp;</span>
                 <div title="subjects" class="section wrapper-tag">
                         <span class="tag-group-label">Subject(s):
                                 <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#6-subject-m" target="_blank"> ? </a>
@@ -893,20 +908,6 @@
                                         <select class="half-width input-field tag-attribute" title="relationType"></select>
                                         <input class="half-width input-field tag-attribute" type="text" placeholder="[METADATA SCHEME]" title="relatedMetadataScheme" value="" />
                                         <input class="half-width input-field tag-attribute" type="text" placeholder="[SCHEME TYPE]" title="schemeType" value="" />
-                                </div>
-                        </div>
-                </div>
-                <span class="divider">&nbsp;</span>
-                <div title="descriptions" class="section wrapper-tag">
-                        <span class="tag-group-label">Description(s):
-                                <a class="tag-group-info" href="https://github.com/UB-LMU/DataCite_BestPracticeGuide/tree/4.4/bestpractice.md#17-description-m" target="_blank"> ? </a>
-                        </span>
-                        <button type="button" class="add group">+</button>
-                        <div class="tag-group">
-                                <div title="description" class="tag">
-                                        <textarea class="full-width input-field tag-value" type="text" placeholder="[DESCRIPTION]" title="description" value=""></textarea>
-                                        <input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value=""/>
-                                        <select class="half-width input-field tag-attribute" title="descriptionType"></select>
                                 </div>
                         </div>
                 </div>
