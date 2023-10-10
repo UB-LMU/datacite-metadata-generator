@@ -23,6 +23,7 @@
 <!-- modified: 2023-08-23 lmeier - added textarea as input for description -->
 <!-- modified: 2023-08-23 samuel-rosa, lmeier - Add missing options: descriptionType, resourceTypeGeneral, contributorType, relatedItemType; dateInformation: use textarea instead of input; add identifierType = ["DOI"] (more identifiers may be used in the future -- see DataCite road map); affiliationIdentifierScheme: adds options; adds reference section -->
 <!-- modified: 2023-09-21 lmeier - change order of fields in recommended elements: prioritize description -->
+<!-- modified: 2023-09-21 lmeier - Add missing item: classificationCode in subject -->
 
 <head>
         <meta charset="utf-8" />
@@ -845,7 +846,8 @@
                                         <select class="half-width input-field tag-attribute" type="text"  title="subjectScheme" value=""></select>
                                         <input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT SCHEME URI]" title="schemeURI" value="" />
                                         <input class="language half-width input-field tag-attribute" type="text" maxlength="3" placeholder="[LANG]" title="xml:lang" value="" />
-                                        <input class="full-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
+                                        <input class="half-width input-field tag-attribute" type="text" placeholder="[SUBJECT VALUE URI]" title="valueURI" value="" />
+                                        <input class="half-width input-field tag-attribute" type="text" placeholder="[CLASSIFICATION CODE]" title="classificationCode" value="" />
                                 </div>
                         </div>
                 </div>
