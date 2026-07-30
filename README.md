@@ -1,6 +1,15 @@
 datacite-metadata-generator
 ===========================
 
+> ⚠️ **Unmaintained**
+>
+> This repository is no longer actively maintained (2025-07-29). No further development or bug fixes are planned.
+>
+> Existing users may continue to use the project at their own risk. We recommend using [https://github.com/UB-LMU/datacite-metadata-generator-alpine](https://github.com/UB-LMU/datacite-metadata-generator-alpine) instead.
+>
+> If you have any questions, please contact: [forschungsdaten@ub.uni-muenchen.de](mailto:forschungsdaten@ub.uni-muenchen.de). 
+
+
 This is a single HTML form which can be used to generate DataCite Metadata Kernel 4.6 XML. 
 
 It is the updated version of [Marcin Paluch's](https://github.com/mpaluch/datacite-metadata-generator) and metadata generator.
@@ -28,4 +37,4 @@ Uses:
 Notes:
 ======
 - The form does not perform any XML validation or validation against the DataCite schema.
-- This code is no longer maintained or updated. If you plan to update it, please contact: forschungsdaten@ub.uni-muenchen.de. (2025-07-29)
+- This code is no longer maintained or updated. If you plan to update it, please contact: [forschungsdaten@ub.uni-muenchen.de](mailto:forschungsdaten@ub.uni-muenchen.de). (2025-07-29)
